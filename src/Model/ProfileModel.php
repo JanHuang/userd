@@ -16,8 +16,10 @@ class ProfileModel extends Model
 {
     public function findProfile($id)
     {
-        return [
-            'id' => $id
-        ];
+        $profile = $this->db->get('profile', '*', [
+            'user_id' => $id
+        ]);
+
+        return false === $profile ? [] : $profile;
     }
 }

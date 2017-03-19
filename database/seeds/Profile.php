@@ -37,7 +37,24 @@ class Profile extends Migration
      */
     public function dataSet()
     {
-
+        $this->insert('profile', [
+            [
+                'user_id' => 1,
+                'nickname' => 'foo',
+                'birthday' => '2016-01-01',
+                'gender' => 1,
+                'avatar' => '',
+                'email' => '384099566@qq.com',
+                'phone' => '',
+                'country' => '中国',
+                'province' => '广东',
+                'city' => '广州',
+                'region' => '天河区',
+                'from' => 'fastd',
+                'created' => date('Y-m-d'),
+                'updated' => date('Y-m-d'),
+            ]
+        ]);
     }
 
     /**
