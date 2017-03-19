@@ -12,22 +12,24 @@ class Profile extends Migration
     {
         $table = $this->table('profile', ['id' => false]);
         $table
-            ->addColumn('user_id')
-            ->addColumn('nickname')
-            ->addColumn('birthday')
-            ->addColumn('gender')
-            ->addColumn('avatar')
-            ->addColumn('email')
-            ->addColumn('phone')
-            ->addColumn('country')
-            ->addColumn('province')
-            ->addColumn('city')
-            ->addColumn('region')
-            ->addColumn('from')
-            ->addColumn('created')
-            ->addColumn('updated')
+            ->addColumn('user_id', 'string', ['limit' => 32])
+            ->addColumn('nickname', 'string', ['limit' => 20])
+            ->addColumn('birthday', 'date')
+            ->addColumn('gender', 'integer')
+            ->addColumn('avatar', 'string', ['limit' => 160])
+            ->addColumn('email', 'string', ['limit' => 30])
+            ->addColumn('phone', 'string', ['limit' => 30])
+            ->addColumn('country', 'string', ['limit' => 20])
+            ->addColumn('province', 'string', ['limit' => 20])
+            ->addColumn('city', 'string', ['limit' => 20])
+            ->addColumn('region', 'string', ['limit' => 20])
+            ->addColumn('from', 'string', ['limit' => 32])
+            ->addColumn('created', 'date')
+            ->addColumn('updated', 'date')
         ;
-        $table->create();
+        if (!$table->exists()) {
+            $table->create();
+        }
     }
 
     /**

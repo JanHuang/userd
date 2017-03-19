@@ -12,14 +12,16 @@ class Token extends Migration
     {
         $table = $this->table('account', ['id' => false]);
         $table
-            ->addColumn('user_id', 'string')
-            ->addColumn('access_token')
-            ->addColumn('refresh_token')
-            ->addColumn('expires')
-            ->addColumn('access_ip')
-            ->addColumn('created')
+            ->addColumn('user_id', 'string', ['limit' => 32])
+            ->addColumn('access_token', 'string', ['limit' => 32])
+            ->addColumn('refresh_token', 'string', ['limit' => 32])
+            ->addColumn('expires', 'integer')
+            ->addColumn('access_ip', 'integer')
+            ->addColumn('created', 'date')
         ;
-        $table->create();
+        if (!$table->exists()) {
+            $table->create();
+        }
     }
 
     /**

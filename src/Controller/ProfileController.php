@@ -10,7 +10,21 @@
 namespace Controller;
 
 
+use FastD\Http\ServerRequest;
+
 class ProfileController
 {
+    public function getProfile(ServerRequest $request)
+    {
+        $id = $request->getAttribute('id');
 
+        $profile = model('profile')->findProfile($id);
+
+        return json($profile);
+    }
+
+    public function setProfile()
+    {
+
+    }
 }

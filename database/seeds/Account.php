@@ -12,15 +12,17 @@ class Account extends Migration
     {
         $table = $this->table('account', ['id' => false]);
         $table
-            ->addColumn('user_id')
-            ->addColumn('account')
-            ->addColumn('email')
-            ->addColumn('phone')
-            ->addColumn('password')
-            ->addColumn('created')
-            ->addColumn('updated')
+            ->addColumn('user_id', 'string')
+            ->addColumn('account', 'string', ['limit' => 32])
+            ->addColumn('email', 'string', ['limit' => 30])
+            ->addColumn('phone', 'string', ['limit' => 30])
+            ->addColumn('password', 'string', ['limit' => 32])
+            ->addColumn('created', 'date')
+            ->addColumn('updated', 'date')
         ;
-        $table->create();
+        if (!$table->exists()) {
+            $table->create();
+        }
     }
 
     /**
