@@ -14,18 +14,10 @@ use FastD\Test\TestCase;
 
 class IndexControllerTest extends TestCase
 {
-    public function testSayHello()
+    public function testProfile()
     {
-        $request = $this->request('GET', '/');
+        $request = $this->request('GET', '/profile/1');
         $response = $this->app->handleRequest($request);
-        $this->json($response, (['msg' => 'hello dobee']));
-        $this->isSuccessful($response);
-    }
-
-    public function testDynamic()
-    {
-        $request = $this->request('GET', '/hello/foo');
-        $response = $this->app->handleRequest($request);
-        $this->json($response, ['msg' => 'hello foo', ]);
+        echo $response->getBody();
     }
 }

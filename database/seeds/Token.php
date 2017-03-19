@@ -10,7 +10,7 @@ class Token extends Migration
      */
     public function setUp()
     {
-        $table = $this->table('account', ['id' => false]);
+        $table = $this->table('token', ['id' => false]);
         $table
             ->addColumn('user_id', 'string', ['limit' => 32])
             ->addColumn('access_token', 'string', ['limit' => 32])
