@@ -8,7 +8,7 @@ class Account extends Migration
     /**
      * Set up database table schema
      */
-    public function setUp()
+    public function up()
     {
         $table = $this->table('account', ['id' => false]);
         $table
@@ -26,17 +26,9 @@ class Account extends Migration
     }
 
     /**
-     * Insert into data set in table
-     */
-    public function dataSet()
-    {
-    
-    }
-
-    /**
      * delete data or truncate table
      */
-    public function tearDown()
+    public function down()
     {
     
     }

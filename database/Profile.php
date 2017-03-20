@@ -8,7 +8,7 @@ class Profile extends Migration
     /**
      * Set up database table schema
      */
-    public function setUp()
+    public function up()
     {
         $table = $this->table('profile', ['id' => false]);
         $table
@@ -30,13 +30,7 @@ class Profile extends Migration
         if (!$table->exists()) {
             $table->create();
         }
-    }
 
-    /**
-     * Insert into data set in table
-     */
-    public function dataSet()
-    {
         $this->insert('profile', [
             [
                 'user_id' => 1,
@@ -60,7 +54,7 @@ class Profile extends Migration
     /**
      * delete data or truncate table
      */
-    public function tearDown()
+    public function down()
     {
     
     }
