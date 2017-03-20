@@ -10,6 +10,7 @@
 namespace Controller;
 
 
+use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 
 class ProfileController
@@ -23,8 +24,21 @@ class ProfileController
         return json($profile);
     }
 
-    public function setProfile()
+    public function setProfile(ServerRequest $request)
     {
+        $id = $request->getAttribute('id');
 
+        $profile = model('profile')->setProfile($id);
+
+        return json($profile);
+    }
+
+    public function deleteProfile(ServerRequest $request)
+    {
+        $id = $request->getAttribute('id');
+
+        $profile = model('profile')->setProfile($id);
+
+        return json($profile, Response::HTTP_NO_CONTENT);
     }
 }

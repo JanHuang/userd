@@ -22,4 +22,13 @@ class ProfileModel extends Model
 
         return false === $profile ? [] : $profile;
     }
+
+    public function setProfile($id, array $profile)
+    {
+        $this->db->update('profile', $profile, [
+            'user_id' => $id
+        ]);
+
+        return $this->findProfile($id);
+    }
 }
