@@ -16,6 +16,7 @@ class ProfileModel extends Model
 {
     public function findProfile($id)
     {
+
         $profile = $this->db->get('profile', '*', [
             'user_id' => $id
         ]);
@@ -30,5 +31,14 @@ class ProfileModel extends Model
         ]);
 
         return $this->findProfile($id);
+    }
+
+    public function deleteProfile($id)
+    {
+        $this->db->delete('profile', [
+           'user_id' => $id
+        ]);
+
+        return [];
     }
 }

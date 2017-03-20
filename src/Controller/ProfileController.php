@@ -26,9 +26,17 @@ class ProfileController
 
     public function setProfile(ServerRequest $request)
     {
-        $id = $request->getAttribute('id');
+        $data = $request->getAttributes();
 
-        $profile = model('profile')->setProfile($id);
+        $result = model('profile')->findProfile($data['user_id']);
+
+        foreach ($data as $key => $value){
+            $result[$key] = $value;
+        }
+
+        $result['updated'] = date("Y-m-d",time());
+
+        $profile = model('profile')->setProfile($result['user_id'], $result);
 
         return json($profile);
     }
@@ -37,7 +45,7 @@ class ProfileController
     {
         $id = $request->getAttribute('id');
 
-        $profile = model('profile')->setProfile($id);
+        $profile = model('profile')->deleteProfile($id);
 
         return json($profile, Response::HTTP_NO_CONTENT);
     }
