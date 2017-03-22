@@ -10,15 +10,15 @@ class Token extends Migration
      */
     public function up()
     {
-        $table = $this->table('account', ['id' => false]);
+        $table = $this->table('token', ['id' => false]);
         $table
             ->addColumn('user_id', 'string')
-            ->addColumn('account', 'string', ['limit' => 32])
-            ->addColumn('email', 'string', ['limit' => 30])
-            ->addColumn('phone', 'string', ['limit' => 30])
-            ->addColumn('password', 'string', ['limit' => 32])
+            ->addColumn('access_token', 'string', ['limit' => 32])
+            ->addColumn('refresh_token', 'string', ['limit' => 30])
+            ->addColumn('expire', 'integer')
+            ->addColumn('role', 'string')
+            ->addColumn('ip', 'integer', ['limit' => 10])
             ->addColumn('created', 'date')
-            ->addColumn('updated', 'date')
         ;
         if (!$table->exists()) {
             $table->create();

@@ -13,8 +13,16 @@ namespace Controller;
 use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 
+/**
+ * Class ProfileController
+ * @package Controller
+ */
 class ProfileController
 {
+    /**
+     * @param ServerRequest $request
+     * @return \FastD\Http\JsonResponse
+     */
     public function getProfile(ServerRequest $request)
     {
         $id = $request->getAttribute('id');
@@ -24,6 +32,10 @@ class ProfileController
         return json($profile);
     }
 
+    /**
+     * @param ServerRequest $request
+     * @return \FastD\Http\JsonResponse
+     */
     public function setProfile(ServerRequest $request)
     {
         $id = $request->getAttribute('id');
@@ -33,6 +45,10 @@ class ProfileController
         return json($profile);
     }
 
+    /**
+     * @param ServerRequest $request
+     * @return \FastD\Http\JsonResponse
+     */
     public function deleteProfile(ServerRequest $request)
     {
         $id = $request->getAttribute('id');
