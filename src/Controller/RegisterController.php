@@ -10,7 +10,12 @@
 namespace Controller;
 
 
+use FastD\Http\ServerRequest;
+
 class RegisterController
 {
+    public function register(ServerRequest $request)
+    {
 
+    }
 }

@@ -37,7 +37,7 @@ PATCH /profile/{user_id}
 
 name | age
 ---- | ---
-user_id | 用户id
+user_id | 
 
 #### 参数
 
