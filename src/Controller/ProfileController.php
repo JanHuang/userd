@@ -42,11 +42,11 @@ class ProfileController
 
         $result = model('profile')->findProfile($data['user_id']);
 
-        foreach ($data as $key => $value){
+        foreach ($data as $key => $value) {
             $result[$key] = $value;
         }
 
-        $result['updated'] = date("Y-m-d",time());
+        $result['updated'] = date("Y-m-d", time());
 
         $profile = model('profile')->setProfile($result['user_id'], $result);
 

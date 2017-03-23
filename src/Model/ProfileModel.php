@@ -36,7 +36,7 @@ class ProfileModel extends Model
     public function deleteProfile($id)
     {
         $this->db->delete('profile', [
-           'user_id' => $id
+            'user_id' => $id
         ]);
 
         return [];
