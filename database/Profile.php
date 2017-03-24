@@ -10,6 +10,10 @@ class Profile extends Migration
      */
     public function up()
     {
+        if ($this->hasTable('profile')) {
+            $this->dropTable('profile');
+        }
+        /*
         $table = $this->table('profile', ['id' => false]);
         $table
             ->addColumn('user_id', 'string', ['limit' => 32])
@@ -48,13 +52,15 @@ class Profile extends Migration
                 ]
             ]);
         }
+        */
     }
+
 
     /**
      * delete data or truncate table
      */
     public function down()
     {
-    
+
     }
 }
