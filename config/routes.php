@@ -6,6 +6,7 @@
 route()->post('/login', 'LoginController@login');
 route()->post('/logout', 'LoginController@logout');
 route()->post('/register', 'RegisterController@register');
+route()->get('/register/{id}', 'RegisterController@register');
 route()->post('/thirty/{platform}', 'ThirtyController@login');
 
 /**
