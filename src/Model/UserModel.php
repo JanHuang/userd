@@ -16,11 +16,13 @@ class UserModel extends Model
 {
     const TABLE = 'users';
 
-    public function findProfile($id)
+    public function findUser($id)
     {
-
         $profile = $this->db->get(static::TABLE, '*', [
-            'user_id' => $id
+            'OR' => [
+                'id' => $id,
+                'username' => $id
+            ]
         ]);
 
         return false === $profile ? [] : $profile;
@@ -35,15 +37,17 @@ class UserModel extends Model
             ]
         ]);
 
-        return $this->findProfile($id);
+        return $this->findUser($id);
     }
 
     public function createUser(array $user)
     {
-        return $this->db->insert(static::TABLE, $user);
+        $id = $this->db->insert(static::TABLE, $user);
+
+        return $this->findUser($id);
     }
 
-    public function deleteProfile($id)
+    public function deleteUser($id)
     {
         $this->db->delete(static::TABLE, [
             'user_id' => $id

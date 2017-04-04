@@ -81,7 +81,7 @@ class UserController
 
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        $user->patchUser($request->getAttribute('id'), $data);
+        $user->patchUser($request->getAttribute('user'), $data);
 
         return json($request->getParsedBody());
     }
