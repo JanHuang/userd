@@ -3,17 +3,17 @@
 
 use FastD\Model\Migration;
 
-class UserGroup extends Migration
+class Group extends Migration
 {
     /**
      * Set up database table schema
      */
     public function up()
     {
-        $table = $this->table('user_groups', ['id' => false]);
+        $table = $this->table('groups');
         $table
-            ->addColumn('user_id', 'string')
-            ->addColumn('group_id', 'string')
+            ->addColumn('name_singular', 'string', ['limit' => 100])
+            ->addColumn('name_plural', 'string', ['limit' => 100])
             ->addColumn('created', 'datetime')
         ;
         if (!$table->exists()) {

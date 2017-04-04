@@ -42,12 +42,14 @@ class UserModel extends Model
 
     public function findUsers($page = 1)
     {
-        return $this->db->select(static::TABLE, '*');
+        return $this->db->select(static::TABLE, [
+            'id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'country', 'province', 'city', 'region', 'from',
+        ]);
     }
 
     public function findUser($id)
     {
-        $profile = $this->db->get(static::TABLE, '*', [
+        $profile = $this->db->get(static::TABLE, ['id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'country', 'province', 'city', 'region', 'from',], [
             'OR' => [
                 'id' => $id,
                 'username' => $id
