@@ -28,15 +28,15 @@ class FriendShipModel extends Model
 
     public function findFollowers($userId)
     {
-        $sql = "select * from friend_ship WHERE follow_id = " . $userId;
+        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created from users left JOIN friend_ship on users.id = friend_ship.user_id WHERE friend_ship.follow_id = " . $userId;
 
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function findFollowing($userId)
     {
-        $sql = "select * from friend_ship WHERE user_id = " . $userId;
-        
+        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created from users LEFT JOIN friend_ship on users.id = friend_ship.user_id WHERE friend_ship.user_id = " . $userId;
+
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 }
