@@ -39,19 +39,9 @@ class UserController
      */
     public function findUser(ServerRequest $request)
     {
-        $data = $request->getAttributes();
+        $user = model('user')->findUser($request->getAttribute('user'));
 
-        $result = model('profile')->findUser($data['user_id']);
-
-        foreach ($data as $key => $value) {
-            $result[$key] = $value;
-        }
-
-        $result['updated'] = date("Y-m-d", time());
-
-        $profile = model('profile')->setProfile($result['user_id'], $result);
-
-        return json($profile);
+        return json($user);
     }
 
     /**
