@@ -10,7 +10,7 @@ class Token extends Migration
      */
     public function up()
     {
-        $table = $this->table('token', ['id' => false]);
+        $table = $this->table('tokens', ['id' => false]);
         $table
             ->addColumn('user_id', 'string')
             ->addColumn('access_token', 'string', ['limit' => 32])
@@ -18,7 +18,7 @@ class Token extends Migration
             ->addColumn('expire', 'integer')
             ->addColumn('role', 'string')
             ->addColumn('ip', 'integer', ['limit' => 10])
-            ->addColumn('created', 'date')
+            ->addColumn('created', 'datetime')
         ;
         if (!$table->exists()) {
             $table->create();

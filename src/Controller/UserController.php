@@ -11,6 +11,7 @@ namespace Controller;
 
 
 use FastD\Http\ServerRequest;
+use Services\Password;
 
 /**
  * Class UserController
@@ -24,9 +25,10 @@ class UserController
      */
     public function findUsers(ServerRequest $request)
     {
-        $id = $request->getAttribute('id');
+        $query = $request->getQueryParams();
+        $page = isset($query['p']) ? $query['p'] : 1;
 
-        $profile = model('user')->findProfile($id);
+        $profile = model('user')->findUsers($page);
 
         return json($profile);
     }
@@ -39,7 +41,7 @@ class UserController
     {
         $data = $request->getAttributes();
 
-        $result = model('profile')->findProfile($data['user_id']);
+        $result = model('profile')->findUser($data['user_id']);
 
         foreach ($data as $key => $value) {
             $result[$key] = $value;
@@ -62,7 +64,7 @@ class UserController
 
         $data = $request->getParsedBody();
 
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $data['password'] = Password::hash($data['password']);
 
         $user->createUser($data);
 
@@ -79,7 +81,7 @@ class UserController
 
         parse_str($request->getBody(), $data);
 
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $data['password'] = Password::hash($data['password']);
 
         $user->patchUser($request->getAttribute('user'), $data);
 

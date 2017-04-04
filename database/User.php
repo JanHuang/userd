@@ -16,7 +16,7 @@ class User extends Migration
             ->addColumn('username', 'string', ['limit' => 32])
             ->addColumn('password', 'string', ['limit' => 100])
             ->addColumn('nickname', 'string', ['limit' => 20])
-            ->addColumn('birthday', 'date')
+            ->addColumn('birthday', 'datetime')
             ->addColumn('gender', 'integer')
             ->addColumn('avatar', 'string', ['limit' => 160])
             ->addColumn('email', 'string', ['limit' => 30])
@@ -26,8 +26,8 @@ class User extends Migration
             ->addColumn('city', 'string', ['limit' => 20])
             ->addColumn('region', 'string', ['limit' => 20])
             ->addColumn('from', 'string', ['limit' => 32])
-            ->addColumn('created', 'date')
-            ->addColumn('updated', 'date')
+            ->addColumn('created', 'datetime')
+            ->addColumn('updated', 'datetime')
         ;
         if (!$table->exists()) {
             $table->create();

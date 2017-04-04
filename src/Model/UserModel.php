@@ -11,10 +11,39 @@ namespace Model;
 
 
 use FastD\Model\Model;
+use Services\Password;
 
 class UserModel extends Model
 {
     const TABLE = 'users';
+
+    public function matchUser($identification, $password)
+    {
+        $user = $this->findUser($identification);
+
+        if (empty($user)) {
+            return json([
+                'code' => '404',
+                'msg' => 'cannot found user'
+            ], 404);
+        }
+
+        $isPass = Password::verify($password, $user['password']);
+
+        if (!$isPass) {
+            return json([
+                'code' => 400,
+                'msg' => 'identification or password match error'
+            ], 400);
+        }
+
+        return $user;
+    }
+
+    public function findUsers($page = 1)
+    {
+        return $this->db->select(static::TABLE, '*');
+    }
 
     public function findUser($id)
     {

@@ -15,7 +15,6 @@ class RegisterController
 {
     public function register(ServerRequest $request)
     {
-
         $data = $request->getParsedBody();
 
         $data['created'] = date("Y-m-d");
