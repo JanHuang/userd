@@ -12,30 +12,40 @@ namespace Model;
 
 use FastD\Model\Model;
 
-class ProfileModel extends Model
+class UserModel extends Model
 {
+    const TABLE = 'users';
+
     public function findProfile($id)
     {
 
-        $profile = $this->db->get('profile', '*', [
+        $profile = $this->db->get(static::TABLE, '*', [
             'user_id' => $id
         ]);
 
         return false === $profile ? [] : $profile;
     }
 
-    public function setProfile($id, array $profile)
+    public function patchUser($id, array $user)
     {
-        $this->db->update('profile', $profile, [
-            'user_id' => $id
+        $this->db->update(static::TABLE, $user, [
+            'OR' => [
+                'id' => $id,
+                'username' => $id,
+            ]
         ]);
 
         return $this->findProfile($id);
     }
 
+    public function createUser(array $user)
+    {
+        return $this->db->insert(static::TABLE, $user);
+    }
+
     public function deleteProfile($id)
     {
-        $this->db->delete('profile', [
+        $this->db->delete(static::TABLE, [
             'user_id' => $id
         ]);
 

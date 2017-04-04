@@ -1,25 +1,18 @@
 <?php
 
-/**
- * User login APIs
- */
-route()->post('/login', 'LoginController@login');
-route()->post('/logout', 'LoginController@logout');
-route()->post('/register', 'RegisterController@register');
-route()->get('/register/{id}', 'RegisterController@register');
-route()->post('/thirty/{platform}', 'ThirtyController@login');
+route()->group('/api', function () {
+    route()->get('/users', 'UserController@findUsers');
+    route()->get('/users/{user}', 'UserController@findUser');
+    route()->post('/users', 'UserController@createUser');
+    route()->patch('/users/{user}', 'UserController@patchUser');
+    route()->delete('/users/{user}', 'UserController@deleteUser');
 
-/**
- * User profile APIs
- */
-route()->get('/profile/{id}', 'ProfileController@getProfile');
-route()->post('/profile', 'ProfileController@createProfile');
-route()->patch('/profile/{id}', 'ProfileController@setProfile');
-route()->delete('/profile/{id}', 'ProfileController@deleteProfile');
+    route()->post('/login', 'LoginController@login');
+    route()->post('/logout', 'LoginController@logout');
+    route()->post('/register', 'RegisterController@register');
+    route()->post('/third/{platform}', 'ThirtyController@login');
 
-/**
- * User friend ship
- */
-route()->get('/followers/{id}', 'FollowerController@followers');
-route()->post('/followers/{id}', 'FollowerController@follow');
-route()->delete('/followers/{id}', 'FollowerController@removeFollower');
+    route()->get('/followers/{id}', 'FollowerController@followers');
+    route()->post('/followers/{id}', 'FollowerController@follow');
+    route()->delete('/followers/{id}', 'FollowerController@removeFollower');
+});

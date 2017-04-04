@@ -10,24 +10,23 @@
 namespace Controller;
 
 
-use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 
 /**
- * Class ProfileController
+ * Class UserController
  * @package Controller
  */
-class ProfileController
+class UserController
 {
     /**
      * @param ServerRequest $request
      * @return \FastD\Http\JsonResponse
      */
-    public function getProfile(ServerRequest $request)
+    public function findUsers(ServerRequest $request)
     {
         $id = $request->getAttribute('id');
 
-        $profile = model('profile')->findProfile($id);
+        $profile = model('user')->findProfile($id);
 
         return json($profile);
     }
@@ -36,7 +35,7 @@ class ProfileController
      * @param ServerRequest $request
      * @return \FastD\Http\JsonResponse
      */
-    public function setProfile(ServerRequest $request)
+    public function findUser(ServerRequest $request)
     {
         $data = $request->getAttributes();
 
@@ -57,7 +56,41 @@ class ProfileController
      * @param ServerRequest $request
      * @return \FastD\Http\JsonResponse
      */
-    public function deleteProfile(ServerRequest $request)
+    public function createUser(ServerRequest $request)
+    {
+        $user = model('user');
+
+        $data = $request->getParsedBody();
+
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        $user->createUser($data);
+
+        return json($request->getParsedBody());
+    }
+
+    /**
+     * @param ServerRequest $request
+     * @return \FastD\Http\JsonResponse
+     */
+    public function patchUser(ServerRequest $request)
+    {
+        $user = model('user');
+
+        parse_str($request->getBody(), $data);
+
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        $user->patchUser($request->getAttribute('id'), $data);
+
+        return json($request->getParsedBody());
+    }
+
+    /**
+     * @param ServerRequest $request
+     * @return \FastD\Http\JsonResponse
+     */
+    public function deleteUser(ServerRequest $request)
     {
         $id = $request->getAttribute('id');
 

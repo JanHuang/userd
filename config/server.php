@@ -15,13 +15,10 @@ return [
         'worker_num' => 10,
         'task_worker_num' => 20,
     ],
-    'processes' => [
-
-    ],
     'listeners' => [
         [
             'class' => \FastD\Servitization\Server\TCPServer::class,
-            'host' => 'tcp://127.0.0.1:9528',
+            'host' => 'tcp://0.0.0.0:9528',
         ]
     ],
 ];
