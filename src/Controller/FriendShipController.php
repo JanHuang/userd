@@ -14,6 +14,10 @@ use FastD\Http\JsonResponse;
 use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 
+/**
+ * Class FriendShipController
+ * @package Controller
+ */
 class FriendShipController
 {
     /**
@@ -27,6 +31,10 @@ class FriendShipController
         return json($followers);
     }
 
+    /**
+     * @param ServerRequest $request
+     * @return JsonResponse
+     */
     public function following(ServerRequest $request)
     {
         $followers = model('friendShip')->findFollowing($request->getAttribute('id'));
@@ -34,6 +42,10 @@ class FriendShipController
         return json($followers);
     }
 
+    /**
+     * @param ServerRequest $request
+     * @return JsonResponse
+     */
     public function follow(ServerRequest $request)
     {
         $body = $request->getParsedBody();

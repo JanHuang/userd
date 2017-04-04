@@ -10,13 +10,22 @@
 namespace Controller;
 
 
+use FastD\Http\Response;
+use FastD\Http\ServerRequest;
+
 class GroupController
 {
-    public function createGroup()
-    {}
+    public function createGroup(ServerRequest $request)
+    {
+        $group = model('group')->createGroup();
+
+        return json($group, Response::HTTP_CREATED);
+    }
 
     public function patchGroup()
-    {}
+    {
+
+    }
 
     public function deleteGroup()
     {}

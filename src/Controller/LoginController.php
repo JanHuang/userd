@@ -20,6 +20,10 @@ use FastD\Http\ServerRequest;
  */
 class LoginController
 {
+    /**
+     * @param ServerRequest $request
+     * @return JsonResponse
+     */
     public function login(ServerRequest $request)
     {
         $identification = $request->getParsedBody()['identification'];

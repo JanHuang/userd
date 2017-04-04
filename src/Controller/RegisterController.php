@@ -20,6 +20,10 @@ use Services\Password;
  */
 class RegisterController
 {
+    /**
+     * @param ServerRequest $request
+     * @return \FastD\Http\JsonResponse
+     */
     public function register(ServerRequest $request)
     {
         $data = $request->getParsedBody();
