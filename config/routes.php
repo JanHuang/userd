@@ -12,7 +12,8 @@ route()->group('/api', function () {
     route()->post('/register', 'RegisterController@register');
     route()->post('/third/{platform}', 'ThirtyController@login');
 
+    route()->post('/follow/{id}', 'FriendShipController@follow');
     route()->get('/followers/{id}', 'FriendShipController@followers');
-    route()->post('/followers/{id}', 'FriendShipController@following');
+    route()->get('/following/{id}', 'FriendShipController@following');
     route()->delete('/followers/{id}', 'FriendShipController@removeFollower');
 });
