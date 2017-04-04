@@ -18,6 +18,7 @@ class Token extends Migration
             ->addColumn('expire', 'integer')
             ->addColumn('role', 'string')
             ->addColumn('ip', 'integer', ['limit' => 10])
+            ->addColumn('status', 'integer', ['limit' => 1])
             ->addColumn('created', 'datetime')
         ;
         if (!$table->exists()) {

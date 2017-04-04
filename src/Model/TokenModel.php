@@ -32,8 +32,12 @@ class TokenModel extends Model
     public function refreshToken()
     {}
 
-    public function expireToken()
-    {}
+    public function expireToken($token)
+    {
+        return $this->db->update(static::TABLE, ['status' => 0], [
+            'access_token' => $token,
+        ]);
+    }
 
     public function findToken($token)
     {

@@ -11,6 +11,7 @@ namespace Controller;
 
 
 use FastD\Http\JsonResponse;
+use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 
 /**
@@ -40,5 +41,10 @@ class LoginController
     }
 
     public function logout(ServerRequest $request)
-    {}
+    {
+        $token = $request->getParsedBody()['access_token'];
+        model('token')->expireToken($token);
+
+        return json([], Response::HTTP_NO_CONTENT);
+    }
 }

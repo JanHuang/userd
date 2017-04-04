@@ -9,27 +9,23 @@
 
 namespace Controller;
 
-use FastD\Http\ServerRequest;
 
+use FastD\Http\ServerRequest;
+use FastD\Utils\DateObject;
+
+/**
+ * Class RegisterController
+ * @package Controller
+ */
 class RegisterController
 {
     public function register(ServerRequest $request)
     {
         $data = $request->getParsedBody();
 
-        $data['created'] = date("Y-m-d");
-        $data['updated'] = date("Y-m-d");
+        $data['created'] = (new DateObject())->format('Y-m-d H:i:s');
 
-        foreach ($data as $value){
-            if(!$value) {
-                return json([
-                    'status' => 0,
-                    'msg'    => '数据填写不正确,重新填写'
-                ]);
-            }
-        }
-
-        $account = model('account')->create($data);
+        $account = model('user')->create($data);
 
         return json($account);
     }
