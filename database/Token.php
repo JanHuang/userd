@@ -16,7 +16,7 @@ class Token extends Migration
             ->addColumn('access_token', 'string', ['limit' => 32])
             ->addColumn('refresh_token', 'string', ['limit' => 30])
             ->addColumn('expire', 'integer')
-            ->addColumn('role', 'string')
+            ->addColumn('scope', 'string')
             ->addColumn('ip', 'integer', ['limit' => 10])
             ->addColumn('status', 'integer', ['limit' => 1])
             ->addColumn('created', 'datetime')
