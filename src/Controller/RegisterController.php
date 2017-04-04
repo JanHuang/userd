@@ -12,6 +12,7 @@ namespace Controller;
 
 use FastD\Http\ServerRequest;
 use FastD\Utils\DateObject;
+use Services\Password;
 
 /**
  * Class RegisterController
@@ -23,10 +24,15 @@ class RegisterController
     {
         $data = $request->getParsedBody();
 
+        $data['password'] = Password::hash($data['password']);
         $data['created'] = (new DateObject())->format('Y-m-d H:i:s');
 
-        $account = model('user')->create($data);
+        $user = model('user')->createUser($data);
 
-        return json($account);
+        $token = model('token')->createToken($user['id']);
+
+        return json([
+            'access_token' => $token
+        ]);
     }
 }

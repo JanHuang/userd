@@ -10,6 +10,7 @@
 namespace Controller;
 
 
+use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 use Services\Password;
 
@@ -86,7 +87,7 @@ class UserController
     {
         $id = $request->getAttribute('id');
 
-        $profile = model('profile')->deleteProfile($id);
+        $profile = model('profile')->deleteUser($id);
 
         return json($profile, Response::HTTP_NO_CONTENT);
     }

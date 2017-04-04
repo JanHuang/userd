@@ -31,9 +31,7 @@ class LoginController
             return $user;
         }
 
-        $token = model('token');
-
-        $token = $token->createToken($user['id']);
+        $token = model('token')->createToken($user['id']);
 
         return json([
             'access_token' => $token
