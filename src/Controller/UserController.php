@@ -57,9 +57,9 @@ class UserController
 
         $data['password'] = Password::hash($data['password']);
 
-        $user->createUser($data);
+        $user = $user->createUser($data);
 
-        return json($request->getParsedBody());
+        return json($user, Response::HTTP_CREATED);
     }
 
     /**
