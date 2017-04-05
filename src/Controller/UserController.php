@@ -10,6 +10,7 @@
 namespace Controller;
 
 
+use FastD\Http\JsonResponse;
 use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 use Services\Password;
@@ -40,7 +41,7 @@ class UserController
      */
     public function findUser(ServerRequest $request)
     {
-        $user = model('user')->findUser($request->getAttribute('user'));
+        $user = model('user')->findUser($request->getAttribute('id'));
 
         return json($user);
     }
@@ -74,7 +75,7 @@ class UserController
 
         $data['password'] = Password::hash($data['password']);
 
-        $user->patchUser($request->getAttribute('user'), $data);
+        $user->patchUser($request->getAttribute('id'), $data);
 
         return json($request->getParsedBody());
     }
@@ -87,13 +88,33 @@ class UserController
     {
         $id = $request->getAttribute('id');
 
-        $profile = model('profile')->deleteUser($id);
+        $profile = model('user')->deleteUser($id);
 
         return json($profile, Response::HTTP_NO_CONTENT);
     }
 
-    public function avatar()
+    /**
+     * @param ServerRequest $request
+     * @return JsonResponse
+     */
+    public function avatar(ServerRequest $request)
     {
-        
+        if (!isset($request->uploadFile['avatar'])) {
+            return json([
+                'code' => 400,
+                'msg' => 'please choice avatar image.'
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
+        $path = config()->get('upload.path');
+
+        $file = $request->uploadFile['avatar']->moveTo($path);
+
+        $relativePath = str_replace(app()->getPath() . '/web', '', $file);
+
+        $user = model('user')->patchUser($request->getAttribute('id'), [
+            'avatar' => $relativePath
+        ]);
+        return json($user);
     }
 }

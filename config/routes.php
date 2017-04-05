@@ -3,10 +3,11 @@
 route()->group('/api', function () {
     // users
     route()->get('/users', 'UserController@findUsers');
-    route()->get('/users/{user}', 'UserController@findUser');
+    route()->get('/users/{id}', 'UserController@findUser');
     route()->post('/users', 'UserController@createUser');
-    route()->patch('/users/{user}', 'UserController@patchUser');
-    route()->delete('/users/{user}', 'UserController@deleteUser');
+    route()->post('/users/{id}/avatar', 'UserController@avatar');
+    route()->patch('/users/{id}', 'UserController@patchUser');
+    route()->delete('/users/{id}', 'UserController@deleteUser');
     // groups
     route()->get('/groups', 'GroupController@findGroups');
     route()->get('/groups/{id}', 'GroupController@findGroup');

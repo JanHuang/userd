@@ -8,5 +8,8 @@
  */
 
 return [
-
+    'upload' => [
+        'driver' => 'local',
+        'path' => app()->getPath() . '/web/uploaded/avatar'
+    ]
 ];
