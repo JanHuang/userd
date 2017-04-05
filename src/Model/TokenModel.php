@@ -12,10 +12,18 @@ namespace Model;
 
 use FastD\Model\Model;
 
+/**
+ * Class TokenModel
+ * @package Model
+ */
 class TokenModel extends Model
 {
     const TABLE = 'tokens';
 
+    /**
+     * @param $userId
+     * @return string
+     */
     public function createToken($userId)
     {
         $accessToken = md5($userId . time());
@@ -32,6 +40,10 @@ class TokenModel extends Model
     public function refreshToken()
     {}
 
+    /**
+     * @param $token
+     * @return bool|int
+     */
     public function expireToken($token)
     {
         return $this->db->update(static::TABLE, ['status' => 0], [

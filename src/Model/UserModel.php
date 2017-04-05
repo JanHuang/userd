@@ -13,10 +13,19 @@ namespace Model;
 use FastD\Model\Model;
 use Services\Password;
 
+/**
+ * Class UserModel
+ * @package Model
+ */
 class UserModel extends Model
 {
     const TABLE = 'users';
 
+    /**
+     * @param $identification
+     * @param $password
+     * @return array|bool|\FastD\Http\JsonResponse|mixed
+     */
     public function matchUser($identification, $password)
     {
         $user = $this->findUser($identification);
@@ -40,6 +49,10 @@ class UserModel extends Model
         return $user;
     }
 
+    /**
+     * @param int $page
+     * @return array
+     */
     public function findUsers($page = 1)
     {
         return $this->db->select(static::TABLE, [
@@ -47,6 +60,10 @@ class UserModel extends Model
         ]);
     }
 
+    /**
+     * @param $id
+     * @return array|bool|mixed
+     */
     public function findUser($id)
     {
         $profile = $this->db->get(static::TABLE, ['id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'country', 'province', 'city', 'region', 'from',], [
@@ -59,6 +76,11 @@ class UserModel extends Model
         return false === $profile ? [] : $profile;
     }
 
+    /**
+     * @param $id
+     * @param array $user
+     * @return array|bool|mixed
+     */
     public function patchUser($id, array $user)
     {
         $this->db->update(static::TABLE, $user, [
@@ -71,6 +93,10 @@ class UserModel extends Model
         return $this->findUser($id);
     }
 
+    /**
+     * @param array $user
+     * @return array|bool|mixed
+     */
     public function createUser(array $user)
     {
         $id = $this->db->insert(static::TABLE, $user);
@@ -78,6 +104,10 @@ class UserModel extends Model
         return $this->findUser($id);
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function deleteUser($id)
     {
         $this->db->delete(static::TABLE, [

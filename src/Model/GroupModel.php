@@ -5,11 +5,19 @@ namespace Model;
 
 use FastD\Model\Model;
 
+/**
+ * Class GroupModel
+ * @package Model
+ */
 class GroupModel extends Model
 {
     const TABLE = 'groups';
     const LIMIT = '15';
 
+    /**
+     * @param int $page
+     * @return array
+     */
     public function select($page = 1)
     {
         $offset = ($page - 1) * static::LIMIT;
@@ -18,6 +26,10 @@ class GroupModel extends Model
         ]);
     }
 
+    /**
+     * @param $id
+     * @return bool|mixed
+     */
     public function find($id)
     {
         return $this->db->get(static::TABLE, '*', [
@@ -27,6 +39,11 @@ class GroupModel extends Model
         ]);
     }
 
+    /**
+     * @param $id
+     * @param array $data
+     * @return bool|mixed
+     */
     public function patch($id, array $data)
     {
         $affected = $this->db->update(static::TABLE, $data, [
@@ -38,6 +55,10 @@ class GroupModel extends Model
         return $this->find($id);
     }
 
+    /**
+     * @param array $data
+     * @return bool|mixed
+     */
     public function create(array $data)
     {
         $data['created'] = date('Y-m-d H:i:s');
@@ -46,6 +67,10 @@ class GroupModel extends Model
         return $this->find($id);
     }
 
+    /**
+     * @param $id
+     * @return bool|int
+     */
     public function deleteUser($id)
     {
         return $this->db->delete(static::TABLE, [

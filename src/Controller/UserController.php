@@ -91,4 +91,9 @@ class UserController
 
         return json($profile, Response::HTTP_NO_CONTENT);
     }
+
+    public function avatar()
+    {
+        
+    }
 }
