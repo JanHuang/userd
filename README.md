@@ -2,12 +2,9 @@
 
 :rocket: 基于 FastD 开发的用户中心 RESTful API
 
-### 安装
+### API 文档
 
-```php
-$ composer -vvv install
-$ php bin/console seed:run 
-```
+* [简体中文](docs/readme.md)
 
 ### FastD 开发文档
 
