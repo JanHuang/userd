@@ -197,12 +197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JanHuang/fastD.git",
-                "reference": "74569a7cf4f2195ae82a3c3a3ee3209d4a3d3004"
+                "reference": "36b6058c6f69816e6d54c5b1688a95fa025229f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/JanHuang/fastD/74569a7cf4f2195ae82a3c3a3ee3209d4a3d3004.zip",
-                "reference": "74569a7cf4f2195ae82a3c3a3ee3209d4a3d3004",
+                "url": "https://files.phpcomposer.com/files/JanHuang/fastD/36b6058c6f69816e6d54c5b1688a95fa025229f6.zip",
+                "reference": "36b6058c6f69816e6d54c5b1688a95fa025229f6",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
             "keywords": [
                 "FastD"
             ],
-            "time": "2017-04-03 14:06:22"
+            "time": "2017-04-05 06:30:22"
         },
         {
             "name": "fastd/http",

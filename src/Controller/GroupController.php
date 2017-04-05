@@ -13,28 +13,46 @@ namespace Controller;
 use FastD\Http\Response;
 use FastD\Http\ServerRequest;
 
+/**
+ * Class GroupController
+ * @package Controller
+ */
 class GroupController
 {
     public function createGroup(ServerRequest $request)
     {
-        $group = model('group')->createGroup();
+        $group = model('group')->create($request->getParsedBody());
 
         return json($group, Response::HTTP_CREATED);
     }
 
-    public function patchGroup()
+    public function patchGroup(ServerRequest $request)
     {
+        parse_str($request->getBody(), $data);
 
+        $groups = model('group')->patch($request->getAttribute('id'), $data);
+
+        return json($groups);
     }
 
-    public function deleteGroup()
-    {}
-
-    public function findGroup()
-    {}
-
-    public function addUserInGroup()
+    public function deleteGroup(ServerRequest $request)
     {
+        $groups = model('group')->delete($request->getAttribute('id'));
 
+        return json($groups);
+    }
+
+    public function findGroups(ServerRequest $request)
+    {
+        $groups = model('group')->select();
+
+        return json($groups);
+    }
+
+    public function findGroup(ServerRequest $request)
+    {
+        $groups = model('group')->find($request->getAttribute('id'));
+
+        return json($groups);
     }
 }
