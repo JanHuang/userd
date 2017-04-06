@@ -16,8 +16,5 @@ class IndexControllerTest extends TestCase
 {
     public function testProfile()
     {
-        $request = $this->request('GET', '/profile/1');
-        $response = $this->app->handleRequest($request);
-        echo $response->getBody();
     }
 }
