@@ -17,5 +17,6 @@ class GroupControllerTest extends TestCase
     public function testGroupAdd()
     {
         $response = $this->request('POST', '/api/groups');
+        var_dump((string) $response->getBody());
     }
 }
