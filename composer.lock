@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1a107be55e1ce0915c0276ea1457db58",
-    "content-hash": "b8699dc67f2f1fdd43079465d49ee5e2",
+    "hash": "adde1bf5a81c1d2580438e739f032072",
+    "content-hash": "f7603e62c73961db4bee28faa55189e8",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -197,12 +197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JanHuang/fastD.git",
-                "reference": "bcf040f62d5efbe1732d0fe1cc236f4b41f9d5b7"
+                "reference": "6d1358bb754238e3cb978563eb650338628e9c35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/JanHuang/fastD/bcf040f62d5efbe1732d0fe1cc236f4b41f9d5b7.zip",
-                "reference": "bcf040f62d5efbe1732d0fe1cc236f4b41f9d5b7",
+                "url": "https://files.phpcomposer.com/files/JanHuang/fastD/6d1358bb754238e3cb978563eb650338628e9c35.zip",
+                "reference": "6d1358bb754238e3cb978563eb650338628e9c35",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
             "keywords": [
                 "FastD"
             ],
-            "time": "2017-04-06 09:16:02"
+            "time": "2017-04-09 11:03:37"
         },
         {
             "name": "fastd/http",
