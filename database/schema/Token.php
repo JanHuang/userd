@@ -6,9 +6,9 @@ use FastD\Model\Migration;
 class Token extends Migration
 {
     /**
-     * Set up database table schema
+     * @return \Phinx\Db\Table
      */
-    public function up()
+    public function setUp()
     {
         $table = $this->table('tokens', ['id' => false]);
         $table
@@ -21,16 +21,16 @@ class Token extends Migration
             ->addColumn('status', 'integer', ['limit' => 1])
             ->addColumn('created', 'datetime')
         ;
-        if (!$table->exists()) {
-            $table->create();
-        }
+        return $table;
     }
 
     /**
-     * delete data or truncate table
+     * @param \Phinx\Db\Table $table
+     *
+     * @return mixed
      */
-    public function down()
+    public function dataSet(\Phinx\Db\Table $table)
     {
-    
+        // TODO: Implement dataSet() method.
     }
 }

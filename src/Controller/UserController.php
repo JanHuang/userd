@@ -28,7 +28,7 @@ class UserController
     public function findUsers(ServerRequest $request)
     {
         $query = $request->getQueryParams();
-        $page = isset($query['p']) ? $query['p'] : 1;
+        $page = isset($query['p']) ? (int) $query['p'] : 1;
 
         $profile = model('user')->findUsers($page);
 

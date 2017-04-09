@@ -6,9 +6,9 @@ use FastD\Model\Migration;
 class User extends Migration
 {
     /**
-     * Set up database table schema
+     * @return \Phinx\Db\Table
      */
-    public function up()
+    public function setUp()
     {
         $table = $this->table('users');
         $table
@@ -29,8 +29,16 @@ class User extends Migration
             ->addColumn('created', 'datetime')
             ->addColumn('updated', 'datetime')
         ;
-        if (!$table->exists()) {
-            $table->create();
-        }
+        return $table;
+    }
+
+    /**
+     * @param \Phinx\Db\Table $table
+     *
+     * @return mixed
+     */
+    public function dataSet(\Phinx\Db\Table $table)
+    {
+        // TODO: Implement dataSet() method.
     }
 }

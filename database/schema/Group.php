@@ -6,9 +6,9 @@ use FastD\Model\Migration;
 class Group extends Migration
 {
     /**
-     * Set up database table schema
+     * @return \Phinx\Db\Table
      */
-    public function up()
+    public function setUp()
     {
         $table = $this->table('groups');
         $table
@@ -16,8 +16,16 @@ class Group extends Migration
             ->addColumn('name_plural', 'string', ['limit' => 100])
             ->addColumn('created', 'datetime')
         ;
-        if (!$table->exists()) {
-            $table->create();
-        }
+        return $table;
+    }
+
+    /**
+     * @param \Phinx\Db\Table $table
+     *
+     * @return mixed
+     */
+    public function dataSet(\Phinx\Db\Table $table)
+    {
+        // TODO: Implement dataSet() method.
     }
 }
