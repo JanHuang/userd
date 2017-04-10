@@ -1,0 +1,17 @@
+-
+  id: 1
+  username: foo
+  password: $2y$10$jRubuyy1RJKo5jFq4R7IOua1SMpX3j9GMxJed5BHO/FkwFVFm3uMO
+  nickname: bar
+  birthday: "2017-04-09 22:36:48"
+  gender: 1
+  avatar: ""
+  email: 384099566@qq.com
+  phone: 18312312312
+  country: China
+  province: GuangDong
+  city: GuangZhou
+  region: TianHe
+  from: ""
+  created: "2017-04-09 22:36:48"
+  updated: "2017-04-09 22:36:48"

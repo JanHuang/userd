@@ -16,7 +16,23 @@ class GroupControllerTest extends TestCase
 {
     public function testGroupAdd()
     {
-        $response = $this->request('POST', '/api/groups');
-        var_dump((string) $response->getBody());
+        $request = $this->request('POST', '/api/groups');
+        $request->withParsedBody([
+            'name_singular' => 'manager',
+            'name_plural' => 'managers'
+        ]);
+        $response = $this->app->handleRequest($request);
+        $this->json($response, [
+            'id' => 2,
+            'name_singular' => 'manager',
+            'name_plural' => 'managers',
+            'created' => date('Y-m-d H:i:s'),
+        ]);
+    }
+
+    public function testGroups()
+    {
+        $request = $this->request('GET', '/api/groups');
+        $response = $this->app->handleRequest($request);
     }
 }

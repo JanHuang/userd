@@ -794,16 +794,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "1.0.23",
+            "version": "1.0.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "a8ac52707db5fbef78d025d5d31c13da615ecb2d"
+                "reference": "2040343fd871e6d745a1d2ffb9b353097efffa36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/overtrue/socialite/a8ac52707db5fbef78d025d5d31c13da615ecb2d.zip",
-                "reference": "a8ac52707db5fbef78d025d5d31c13da615ecb2d",
+                "url": "https://files.phpcomposer.com/files/overtrue/socialite/2040343fd871e6d745a1d2ffb9b353097efffa36.zip",
+                "reference": "2040343fd871e6d745a1d2ffb9b353097efffa36",
                 "shasum": ""
             },
             "require": {
@@ -840,7 +840,7 @@
                 "wechat",
                 "weibo"
             ],
-            "time": "2017-03-04 02:57:44"
+            "time": "2017-04-08 11:39:52"
         },
         {
             "name": "psr/cache",

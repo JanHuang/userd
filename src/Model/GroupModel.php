@@ -21,9 +21,14 @@ class GroupModel extends Model
     public function select($page = 1)
     {
         $offset = ($page - 1) * static::LIMIT;
-        return $this->db->select(static::TABLE, '*', [
-            'LIMIT' => [$offset, static::LIMIT]
-        ]);
+
+        return $this->db->select(
+            static::TABLE,
+            '*',
+            [
+                'LIMIT' => [$offset, static::LIMIT],
+            ]
+        );
     }
 
     /**
@@ -32,11 +37,15 @@ class GroupModel extends Model
      */
     public function find($id)
     {
-        return $this->db->get(static::TABLE, '*', [
-            'OR' => [
-                'id' => $id,
+        return $this->db->get(
+            static::TABLE,
+            '*',
+            [
+                'OR' => [
+                    'id' => $id,
+                ],
             ]
-        ]);
+        );
     }
 
     /**
@@ -46,11 +55,15 @@ class GroupModel extends Model
      */
     public function patch($id, array $data)
     {
-        $affected = $this->db->update(static::TABLE, $data, [
-            'OR' => [
-                'id' => $id,
+        $affected = $this->db->update(
+            static::TABLE,
+            $data,
+            [
+                'OR' => [
+                    'id' => $id,
+                ],
             ]
-        ]);
+        );
 
         return $this->find($id);
     }
@@ -73,8 +86,11 @@ class GroupModel extends Model
      */
     public function deleteUser($id)
     {
-        return $this->db->delete(static::TABLE, [
-            'id' => $id
-        ]);
+        return $this->db->delete(
+            static::TABLE,
+            [
+                'id' => $id,
+            ]
+        );
     }
 }
