@@ -197,12 +197,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JanHuang/fastD.git",
-                "reference": "6d1358bb754238e3cb978563eb650338628e9c35"
+                "reference": "22f546bb30c080084dc772d0b1eb2bd0cb290e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/JanHuang/fastD/6d1358bb754238e3cb978563eb650338628e9c35.zip",
-                "reference": "6d1358bb754238e3cb978563eb650338628e9c35",
+                "url": "https://files.phpcomposer.com/files/JanHuang/fastD/22f546bb30c080084dc772d0b1eb2bd0cb290e79.zip",
+                "reference": "22f546bb30c080084dc772d0b1eb2bd0cb290e79",
                 "shasum": ""
             },
             "require": {
@@ -253,20 +253,20 @@
             "keywords": [
                 "FastD"
             ],
-            "time": "2017-04-09 11:03:37"
+            "time": "2017-04-11 12:11:49"
         },
         {
             "name": "fastd/http",
-            "version": "v3.0.9",
+            "version": "v3.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JanHuang/http.git",
-                "reference": "3b0b5619126df833033f7fa114f22200f5e260da"
+                "reference": "3d2f2472f230e18d69d4d791c060aa770b839c9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/JanHuang/http/3b0b5619126df833033f7fa114f22200f5e260da.zip",
-                "reference": "3b0b5619126df833033f7fa114f22200f5e260da",
+                "url": "https://files.phpcomposer.com/files/JanHuang/http/3d2f2472f230e18d69d4d791c060aa770b839c9c.zip",
+                "reference": "3d2f2472f230e18d69d4d791c060aa770b839c9c",
                 "shasum": ""
             },
             "require": {
@@ -297,7 +297,7 @@
                 "FastD",
                 "http"
             ],
-            "time": "2017-04-06 08:36:51"
+            "time": "2017-04-10 15:05:17"
         },
         {
             "name": "fastd/middleware",
