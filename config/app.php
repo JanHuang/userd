@@ -11,7 +11,7 @@ return [
     /**
      * The application name.
      */
-    'name' => 'userd',
+    'name' => 'user-d',
 
     /**
      * Application environment local/dev/prod
@@ -34,6 +34,9 @@ return [
      * Bootstrap service.
      */
     'services' => [
+        \FastD\ServiceProvider\ConfigServiceProvider::class,
+        \FastD\ServiceProvider\RouteServiceProvider::class,
+        \FastD\ServiceProvider\LoggerServiceProvider::class,
         \FastD\ServiceProvider\DatabaseServiceProvider::class,
         \FastD\ServiceProvider\CacheServiceProvider::class,
     ],
