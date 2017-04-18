@@ -10,7 +10,7 @@
 namespace Testing;
 
 use Controller\UserController;
-use FastD\Test\TestCase;
+use FastD\TestCase;
 
 class UserControllerTest extends TestCase
 {
@@ -43,6 +43,6 @@ class UserControllerTest extends TestCase
             'password' => '123456'
         ]);
         $response = $this->app->handleRequest($request);
-        echo $response->getBody();
+        $this->equalsJsonResponseHasKey($response, ['token', 'user_id']);
     }
 }

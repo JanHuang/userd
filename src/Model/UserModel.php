@@ -28,7 +28,7 @@ class UserModel extends Model
      */
     public function matchUser($identification, $password)
     {
-        $user = $this->db->get(static::TABLE, ['password'], [
+        $user = $this->db->get(static::TABLE, ['id', 'password'], [
             'OR' => [
                 'id' => $identification,
                 'username' => $identification

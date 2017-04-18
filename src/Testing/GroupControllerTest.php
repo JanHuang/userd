@@ -10,7 +10,7 @@
 namespace Testing;
 
 use Controller\GroupController;
-use FastD\Test\TestCase;
+use FastD\TestCase;
 
 class GroupControllerTest extends TestCase
 {
@@ -22,7 +22,7 @@ class GroupControllerTest extends TestCase
             'name_plural' => 'managers'
         ]);
         $response = $this->app->handleRequest($request);
-        $this->json($response, [
+        $this->equalsJson($response, [
             'id' => 2,
             'name_singular' => 'manager',
             'name_plural' => 'managers',
