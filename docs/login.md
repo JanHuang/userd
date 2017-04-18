@@ -10,7 +10,7 @@ POST /api/login
     "password": "123456"
 }
 
-HTTP/1.1 201 Created
+HTTP/1.1 200 OK
 
 {
     "token": "YACub2KLfe8mfmHPcUKtt6t2SMJOGPXnZbqhc3nX",

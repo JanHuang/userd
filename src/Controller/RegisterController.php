@@ -36,7 +36,8 @@ class RegisterController
         $token = model('token')->createToken($user['id']);
 
         return json([
-            'access_token' => $token
+            'token' => $token,
+            'user_id' => $user['id']
         ]);
     }
 }

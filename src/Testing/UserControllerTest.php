@@ -33,6 +33,7 @@ class UserControllerTest extends TestCase
             'from' => 'qq',
         ]);
         $response = $this->app->handleRequest($request);
+        $this->equalsJsonResponseHasKey($response, ['token', 'user_id']);
     }
 
     public function testUserLogin()
