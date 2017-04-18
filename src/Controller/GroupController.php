@@ -37,9 +37,9 @@ class GroupController
 
     public function deleteGroup(ServerRequest $request)
     {
-        $groups = model('group')->delete($request->getAttribute('id'));
+        model('group')->delete($request->getAttribute('id'));
 
-        return json($groups, Response::HTTP_NO_CONTENT);
+        return json([], Response::HTTP_NO_CONTENT);
     }
 
     public function findGroups(ServerRequest $request)

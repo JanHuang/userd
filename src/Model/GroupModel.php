@@ -84,7 +84,7 @@ class GroupModel extends Model
      * @param $id
      * @return bool|int
      */
-    public function deleteUser($id)
+    public function delete($id)
     {
         return $this->db->delete(
             static::TABLE,
