@@ -39,7 +39,7 @@ class GroupController
     {
         $groups = model('group')->delete($request->getAttribute('id'));
 
-        return json($groups);
+        return json($groups, Response::HTTP_NO_CONTENT);
     }
 
     public function findGroups(ServerRequest $request)
