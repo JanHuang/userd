@@ -64,6 +64,5 @@ class UserControllerTest extends TestCase
             'nickname' => 'foo',
             'password' => '123456'
         ]);
-        echo $response->getBody();
     }
 }
