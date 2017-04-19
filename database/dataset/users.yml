@@ -15,3 +15,20 @@
   from: ""
   created: "2017-04-09 22:36:48"
   updated: "2017-04-09 22:36:48"
+-
+  id: 2
+  username: bar
+  password: $2y$10$jRubuyy1RJKo5jFq4R7IOua1SMpX3j9GMxJed5BHO/FkwFVFm3uMO
+  nickname: foo
+  birthday: "2017-04-09 22:36:48"
+  gender: 1
+  avatar: ""
+  email: ""
+  phone: ""
+  country: China
+  province: GuangDong
+  city: GuangZhou
+  region: TianHe
+  from: ""
+  created: "2017-04-09 22:36:48"
+  updated: "2017-04-09 22:36:48"
