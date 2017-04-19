@@ -36,6 +36,7 @@ class FriendShipControllerTest extends TestCase
                 'created' => '2017-04-09 22:36:48',
             ]
         ]);
+        echo $response->getBody();
     }
 
     public function testFollow()
