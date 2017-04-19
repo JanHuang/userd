@@ -23,11 +23,12 @@ class GroupControllerTest extends TestCase
         ]);
         $response = $this->handleRequest($request);
         $this->equalsJson($response, [
-            'id' => 2,
+            'id' => "2",
             'name_singular' => 'manager',
             'name_plural' => 'managers',
             'created' => date('Y-m-d H:i:s'),
         ]);
+
         $this->equalsStatus($response, 201);
     }
 
@@ -37,7 +38,7 @@ class GroupControllerTest extends TestCase
         $response = $this->handleRequest($request);
         $this->equalsJson($response, [
             [
-                'id' => 1,
+                'id' => "1",
                 'name_singular' => 'admin',
                 'name_plural' => 'admins',
                 'created' => '2017-04-09 22:36:48',
@@ -50,7 +51,7 @@ class GroupControllerTest extends TestCase
         $request = $this->request('GET', '/api/groups/1');
         $response = $this->handleRequest($request);
         $this->equalsJson($response, [
-            'id' => 1,
+            'id' => "1",
             'name_singular' => 'admin',
             'name_plural' => 'admins',
             'created' => '2017-04-09 22:36:48',
@@ -65,7 +66,7 @@ class GroupControllerTest extends TestCase
             'name_singular' => $name
         ]);
         $this->equalsJson($response, [
-            'id' => 1,
+            'id' => "1",
             'name_singular' => $name,
             'name_plural' => 'admins',
             'created' => '2017-04-09 22:36:48',

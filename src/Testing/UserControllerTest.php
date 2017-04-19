@@ -59,7 +59,11 @@ class UserControllerTest extends TestCase
     public function testAddUser()
     {
         $request = $this->request('POST', '/api/users');
-        $response = $this->handleRequest($request);
+        $response = $this->handleRequest($request, [
+            'username' => 'bar',
+            'nickname' => 'foo',
+            'password' => '123456'
+        ]);
         echo $response->getBody();
     }
 }
