@@ -46,6 +46,16 @@ class FriendShipControllerTest extends TestCase
         ]);
         $request = $this->request('GET', '/api/followers/1');
         $response = $this->handleRequest($request);
-        echo $response;
+    }
+
+    public function testDeleteRelationShip()
+    {
+        $request = $this->request('DELETE', '/api/followers/1');
+        $response = $this->handleRequest($request, [
+            'user_id' => 2
+        ]);
+        $request = $this->request('GET', '/api/followers/1');
+        $response = $this->handleRequest($request);
+        $this->equalsJson($response, []);
     }
 }
