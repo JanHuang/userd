@@ -32,7 +32,8 @@ return [
      * Application logger path
      */
     'log' => [
-        [\Monolog\Handler\StreamHandler::class, 'error.log', \Monolog\Logger::ERROR],
+        [new \Monolog\Handler\SocketHandler('udp://10.1.80.70:9989', \Monolog\Logger::INFO)],
+        [\Monolog\Handler\StreamHandler::class, 'error.log', \Monolog\Logger::ERROR]
     ],
 
     /**
