@@ -28,11 +28,30 @@ class FriendShipModel extends Model
      */
     public function createFollowRelationShip($userId, $followId)
     {
-        return $this->db->insert(static::TABLE, [
-            'user_id' => $userId,
-            'follow_id' => $followId,
-            'created' => date('Y-m-d H:i:s'),
-        ]);
+        return $this->db->insert(
+            static::TABLE,
+            [
+                'user_id' => $userId,
+                'follow_id' => $followId,
+                'created' => date('Y-m-d H:i:s'),
+            ]
+        );
+    }
+
+    /**
+     * @param $userId
+     * @param $followId
+     * @return bool|int
+     */
+    public function removeFollowRelationShip($userId, $followId)
+    {
+        return $this->db->delete(
+            static::TABLE,
+            [
+                'user_id' => $userId,
+                'follow_id' => $followId,
+            ]
+        );
     }
 
     /**
@@ -41,7 +60,7 @@ class FriendShipModel extends Model
      */
     public function findFollowers($userId)
     {
-        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created from users left JOIN friend_ship on users.id = friend_ship.user_id WHERE friend_ship.follow_id = " . $userId;
+        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created, 0 as followers, 0 as followings from users left JOIN friend_ship on users.id = friend_ship.user_id WHERE friend_ship.follow_id = ".$userId;
 
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -52,7 +71,7 @@ class FriendShipModel extends Model
      */
     public function findFollowing($userId)
     {
-        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created from users LEFT JOIN friend_ship on users.id = friend_ship.user_id WHERE friend_ship.user_id = " . $userId;
+        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created, 0 as followers, 0 as followings from users LEFT JOIN friend_ship on users.id = friend_ship.follow_id WHERE friend_ship.user_id = ".$userId;
 
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }

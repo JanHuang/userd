@@ -14,6 +14,8 @@ use FastD\TestCase;
 
 class GroupControllerTest extends TestCase
 {
+    const JSON_OPTION = JSON_NUMERIC_CHECK;
+
     public function testGroupAdd()
     {
         $request = $this->request('POST', '/api/groups');

@@ -71,14 +71,25 @@ class UserModel extends Model
      */
     public function findUser($id)
     {
-        $profile = $this->db->get(static::TABLE, ['id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'country', 'province', 'city', 'region', 'from',], [
-            'OR' => [
-                'id' => $id,
-                'username' => $id
-            ]
-        ]);
+        $sql = <<<SQL
+SELECT 
+  id,
+  username,
+  nickname,
+  birthday,
+  gender,
+  avatar,
+  country,
+  province,
+  city,
+  region,
+  0 as followers,
+  0 as folloings
+FROM users
+WHERE id = {$id} OR username = '{$id}'
+SQL;
 
-        return false === $profile ? [] : $profile;
+        return $this->db->query($sql)->fetch(\PDO::FETCH_ASSOC);
     }
 
     /**

@@ -60,9 +60,11 @@ class UserControllerTest extends TestCase
     {
         $request = $this->request('POST', '/api/users');
         $response = $this->handleRequest($request, [
+            'id' => 3,
             'username' => 'bar',
             'nickname' => 'foo',
             'password' => '123456'
         ]);
+        $this->assertEquals(201, $response->getStatusCode());
     }
 }

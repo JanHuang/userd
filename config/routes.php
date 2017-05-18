@@ -9,7 +9,7 @@ route()->group('/api', function () {
     route()->patch('/users/{id}', 'UserController@patchUser');
     route()->delete('/users/{id}', 'UserController@deleteUser');
     route()->get('/users/{id}/followers', 'FriendShipController@followers');
-    route()->get('/users/{id}/following', 'FriendShipController@following');
+    route()->get('/users/{id}/followings', 'FriendShipController@following');
     route()->post('/users/{id}/follow', 'FriendShipController@follow');
     route()->delete('/users/{id}/followers/{follow}', 'FriendShipController@removeFollower');
     // groups
