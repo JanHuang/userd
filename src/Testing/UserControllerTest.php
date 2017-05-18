@@ -86,7 +86,7 @@ class UserControllerTest extends TestCase
         $request = $this->request('POST', '/api/users/1/avatar');
         $request->withUploadedFiles(
             [
-                'avatar' => new UploadedFile('test.png', 'images/png', __DIR__.'/avatar.jpeg', 0, 194 * 1024),
+                'avatar' => new UploadedFile('test.png', 'images/png', __DIR__.'/avatar.jpeg', 0, filesize(__DIR__.'/avatar.jpeg')),
             ]
         );
         $response = $this->handleRequest($request);
