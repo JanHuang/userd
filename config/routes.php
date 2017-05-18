@@ -8,6 +8,10 @@ route()->group('/api', function () {
     route()->post('/users/{id}/avatar', 'UserController@avatar');
     route()->patch('/users/{id}', 'UserController@patchUser');
     route()->delete('/users/{id}', 'UserController@deleteUser');
+    route()->get('/users/{id}/followers', 'FriendShipController@followers');
+    route()->get('/users/{id}/following', 'FriendShipController@following');
+    route()->post('/users/{id}/follow', 'FriendShipController@follow');
+    route()->delete('/users/{id}/followers/{follow}', 'FriendShipController@removeFollower');
     // groups
     route()->get('/groups', 'GroupController@findGroups');
     route()->get('/groups/{id}', 'GroupController@findGroup');
@@ -19,9 +23,5 @@ route()->group('/api', function () {
     route()->post('/logout', 'LoginController@logout');
     route()->post('/register', 'RegisterController@register');
     route()->post('/third/{platform}', 'ThirtyController@login');
-    // friend ship
-    route()->post('/follow/{id}', 'FriendShipController@follow');
-    route()->get('/followers/{id}', 'FriendShipController@followers');
-    route()->get('/following/{id}', 'FriendShipController@following');
-    route()->delete('/followers/{id}', 'FriendShipController@removeFollower');
+
 });
