@@ -27,28 +27,34 @@ class FriendShipControllerTest extends TestCase
     {
         $request = $this->request('GET', '/api/users/1/followings');
         $response = $this->handleRequest($request);
-        $this->equalsJson($response, [
+        $this->equalsJson(
+            $response,
             [
-                'nickname' => 'foo',
-                'user_id' => "2",
-                "username" => 'bar',
-                'birthday' => '2017-04-09 22:36:48',
-                'gender' => "1",
-                'avatar' => '',
-                'created' => '2017-04-09 22:36:48',
-                'followers' => 0,
-                'followings' => 0,
+                [
+                    'nickname' => 'foo',
+                    'user_id' => "2",
+                    "username" => 'bar',
+                    'birthday' => '2017-04-09 22:36:48',
+                    'gender' => "1",
+                    'avatar' => '',
+                    'created' => '2017-04-09 22:36:48',
+                    'followers' => 0,
+                    'followings' => 0,
+                ],
             ]
-        ]);
+        );
         $this->equalsStatus($response, 200);
     }
 
     public function testFollow()
     {
         $request = $this->request('POST', '/api/users/2/follow');
-        $response1 = $this->handleRequest($request, [
-            'user_id' => 1
-        ]);
+        $response1 = $this->handleRequest(
+            $request,
+            [
+                'user_id' => 1,
+            ]
+        );
         $this->equalsStatus($response1, 201);
         $request = $this->request('GET', '/api/users/2/followers');
         $response = $this->handleRequest($request);
@@ -59,7 +65,7 @@ class FriendShipControllerTest extends TestCase
     {
         $request = $this->request('GET', '/api/users/1/followings');
         $response = $this->handleRequest($request);
-        $this->assertNotEmpty(json_decode((string) $response->getBody(), true));
+        $this->assertNotEmpty(json_decode((string)$response->getBody(), true));
 
         $request = $this->request('DELETE', '/api/users/1/followings/2');
         $response = $this->handleRequest($request);
@@ -67,6 +73,6 @@ class FriendShipControllerTest extends TestCase
 
         $request = $this->request('GET', '/api/users/1/followings');
         $response = $this->handleRequest($request);
-        $this->assertEmpty(json_decode((string) $response->getBody(), true));
+        $this->assertEmpty(json_decode((string)$response->getBody(), true));
     }
 }
