@@ -56,7 +56,9 @@ class UserController
 
         $data = $request->getParsedBody();
 
-        $data['password'] = Password::hash($data['password']);
+        if (isset($data['password'])) {
+            $data['password'] = Password::hash($data['password']);
+        }
 
         $user = $user->createUser($data);
 

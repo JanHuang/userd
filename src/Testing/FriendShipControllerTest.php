@@ -61,7 +61,7 @@ class FriendShipControllerTest extends TestCase
         $response = $this->handleRequest($request);
         $this->assertNotEmpty(json_decode((string) $response->getBody(), true));
 
-        $request = $this->request('DELETE', '/api/users/1/followers/2');
+        $request = $this->request('DELETE', '/api/users/1/followings/2');
         $response = $this->handleRequest($request);
         $this->assertEquals($response->getStatusCode(), 204);
 

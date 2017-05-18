@@ -98,9 +98,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-### 查看好友
+### 查看粉丝
 
-GET /api/followers/{id or username}
+GET /api/users/{id or username}/followers
 
 ```
 GET /api/followers/6
@@ -120,9 +120,9 @@ HTTP/1.1 200 OK
 ]
 ```
 
-### 查看粉丝
+### 查看我的关注
 
-GET /api/following/{id or username}
+GET /api/users/{id or username}/following
 
 ```
 GET /api/following/6
@@ -144,13 +144,11 @@ HTTP/1.1 200 OK
 
 ### 取消关注
 
-DELETE /api/follower/{id or username}
+DELETE /api/users/{id or username}/followings/{follow}
 
 ```
 DELETE /api/followers/6
 
 HTTP/1.1 204 No Content
 ```
-
-### 头像上传
 

@@ -11,7 +11,7 @@ route()->group('/api', function () {
     route()->get('/users/{id}/followers', 'FriendShipController@followers');
     route()->get('/users/{id}/followings', 'FriendShipController@following');
     route()->post('/users/{id}/follow', 'FriendShipController@follow');
-    route()->delete('/users/{id}/followers/{follow}', 'FriendShipController@removeFollower');
+    route()->delete('/users/{id}/followings/{follow}', 'FriendShipController@removeFollower');
     // groups
     route()->get('/groups', 'GroupController@findGroups');
     route()->get('/groups/{id}', 'GroupController@findGroup');
