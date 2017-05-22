@@ -56,13 +56,25 @@ class UserModel extends Model
 
     /**
      * @param int $page
+     * @param int $limit
      * @return array
      */
-    public function findUsers($page = 1)
+    public function findUsers($page = 1, $limit = 15)
     {
-        return $this->db->select(static::TABLE, [
+        $users = $this->db->select(static::TABLE, [
             'id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'country', 'province', 'city', 'region', 'from',
+        ], [
+            'LIMIT' => [($page - 1) * 15, $limit]
         ]);
+        $total = $this->db->count(static::TABLE);
+        return [
+            'list' => $users,
+            'page' => [
+                'total' => ceil($total / 15),
+                'current' => $page,
+                'limit' => $limit
+            ]
+        ];
     }
 
     /**

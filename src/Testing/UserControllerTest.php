@@ -52,6 +52,13 @@ class UserControllerTest extends TestCase
         $this->equalsJsonResponseHasKey($response, ['token', 'user_id']);
     }
 
+    public function testUsers()
+    {
+        $request = $this->request('GET', '/api/users');
+        $response = $this->handleRequest($request);
+        $this->equalsJsonResponseHasKey($response, ['list', 'page']);
+    }
+
     public function testFindUser()
     {
         $request = $this->request('GET', '/api/users/1');
