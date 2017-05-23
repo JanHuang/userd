@@ -72,7 +72,8 @@ class UserModel extends Model
             'page' => [
                 'total' => ceil($total / 15),
                 'current' => $page,
-                'limit' => $limit
+                'limit' => $limit,
+                'count' => $total,
             ]
         ];
     }

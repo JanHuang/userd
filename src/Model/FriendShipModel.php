@@ -56,9 +56,11 @@ class FriendShipModel extends Model
 
     /**
      * @param $userId
+     * @param $page
+     * @param $limit
      * @return array
      */
-    public function findFollowers($userId)
+    public function findFollowers($userId, $page = 1, $limit = 15)
     {
         $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created, 0 as followers, 0 as followings from users left JOIN friend_ship on users.id = friend_ship.user_id WHERE friend_ship.follow_id = ".$userId;
 
@@ -67,9 +69,11 @@ class FriendShipModel extends Model
 
     /**
      * @param $userId
+     * @param int $page
+     * @param int $limit
      * @return array
      */
-    public function findFollowing($userId)
+    public function findFollowing($userId, $page = 1, $limit = 15)
     {
         $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created, 0 as followers, 0 as followings from users LEFT JOIN friend_ship on users.id = friend_ship.follow_id WHERE friend_ship.user_id = ".$userId;
 

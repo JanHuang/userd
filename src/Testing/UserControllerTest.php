@@ -9,7 +9,6 @@
 
 namespace Testing;
 
-use Controller\UserController;
 use FastD\Http\UploadedFile;
 use FastD\TestCase;
 

@@ -36,9 +36,9 @@ return [
             new \Monolog\Handler\SocketHandler('udp://10.1.80.70:9989', \Monolog\Logger::INFO),
             null,
             null,
-            \Monolog\Formatter\JsonFormatter::class
+            \Monolog\Formatter\JsonFormatter::class,
         ],
-        [\Monolog\Handler\StreamHandler::class, 'error.log', \Monolog\Logger::ERROR]
+        [\Monolog\Handler\StreamHandler::class, 'error.log', \Monolog\Logger::ERROR],
     ],
 
     /**
@@ -66,16 +66,17 @@ return [
             'authenticator' => [
                 'class' => \FastD\BasicAuthenticate\PhpAuthenticator::class,
                 'params' => [
-                    'foo' => 'bar'
-                ]
+                    'foo' => 'bar',
+                ],
             ],
             'response' => [
                 'class' => \FastD\Http\JsonResponse::class,
                 'data' => [
                     'msg' => 'not allow access',
-                    'code' => 401
-                ]
-            ]
-        ])
+                    'code' => 401,
+                ],
+            ],
+        ]),
+        'common.cache' => [\FastD\Middleware\CacheMiddleware::class],
     ],
 ];
