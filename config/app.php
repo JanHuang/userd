@@ -32,12 +32,12 @@ return [
      * Application logger path
      */
     'log' => [
-        [
+        /*[
             new \Monolog\Handler\SocketHandler('udp://10.1.80.70:9989', \Monolog\Logger::INFO),
             null,
             null,
             \Monolog\Formatter\JsonFormatter::class,
-        ],
+        ],*/
         [\Monolog\Handler\StreamHandler::class, 'error.log', \Monolog\Logger::ERROR],
     ],
 
@@ -78,5 +78,6 @@ return [
             ],
         ]),
         'common.cache' => [\FastD\Middleware\CacheMiddleware::class],
+        'validator' => [\Middleware\Validator::class]
     ],
 ];

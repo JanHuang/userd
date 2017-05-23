@@ -12,11 +12,12 @@
     ],
     "require": {
         "php": ">=5.6",
-        "fastd/fastd": "^3.1"
+        "fastd/fastd": "^3.1",
+        "runner/validation": "^1.0",
+        "overtrue/socialite": "~1.0"
     },
     "require-dev": {
-        "phpunit/dbunit": "^2.0",
-        "overtrue/socialite": "~1.0"
+        "phpunit/dbunit": "^2.0"
     },
     "config": {
         "bin-dir": "bin"

@@ -1,6 +1,9 @@
 <?php
 
-route()->group(['prefix' => '/api', 'middleware' => 'common.cache'], function () {
+route()->group(['prefix' => '/api', 'middleware' => [
+    'common.cache',
+    'validator'
+]], function () {
     // users
     route()->get('/users', 'UserController@findUsers');
     route()->get('/users/{id}', 'UserController@findUser');

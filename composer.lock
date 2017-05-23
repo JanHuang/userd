@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ac871a66cbe766cad51226f8f5323601",
-    "content-hash": "bf5015ab27a4cca66a1e0f269d48392f",
+    "hash": "328f6228e242eb362930dc831702a7f7",
+    "content-hash": "f5a5abd978eb1bc307a8be8ff7c443b9",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -257,16 +257,16 @@
         },
         {
             "name": "fastd/http",
-            "version": "v3.0.16",
+            "version": "v3.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JanHuang/http.git",
-                "reference": "7d082974e14232479a2d1439ff483ec2d3de5ec5"
+                "reference": "33bfd87633a6a011d1cc2c75db30cba3e69a173a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/JanHuang/http/7d082974e14232479a2d1439ff483ec2d3de5ec5.zip",
-                "reference": "7d082974e14232479a2d1439ff483ec2d3de5ec5",
+                "url": "https://files.phpcomposer.com/files/JanHuang/http/33bfd87633a6a011d1cc2c75db30cba3e69a173a.zip",
+                "reference": "33bfd87633a6a011d1cc2c75db30cba3e69a173a",
                 "shasum": ""
             },
             "require": {
@@ -297,7 +297,7 @@
                 "FastD",
                 "http"
             ],
-            "time": "2017-05-16 10:54:41"
+            "time": "2017-05-19 13:02:00"
         },
         {
             "name": "fastd/middleware",
@@ -822,6 +822,89 @@
                 "phinx"
             ],
             "time": "2017-02-28 18:34:31"
+        },
+        {
+            "name": "runner/validation",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RunnerLee/validation.git",
+                "reference": "cb2862155f114b8c671e2068844e358311bf519a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/RunnerLee/validation/cb2862155f114b8c671e2068844e358311bf519a.zip",
+                "reference": "cb2862155f114b8c671e2068844e358311bf519a",
+                "shasum": ""
+            },
+            "require": {
+                "fastd/container": "~3.0.0",
+                "fastd/http": "~3.0.0",
+                "fastd/middleware": "~1.0.0",
+                "php": ">=5.6",
+                "runner/validator": "~0.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Runner\\Validation\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "runnerlee",
+                    "email": "runnerleer@gmail.com"
+                }
+            ],
+            "time": "2017-04-25 08:50:43"
+        },
+        {
+            "name": "runner/validator",
+            "version": "v0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RunnerLee/validator.git",
+                "reference": "72e41d9d1c299d2546ca2819271e8d2a18640870"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/RunnerLee/validator/72e41d9d1c299d2546ca2819271e8d2a18640870.zip",
+                "reference": "72e41d9d1c299d2546ca2819271e8d2a18640870",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Runner\\Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "runnerlee",
+                    "email": "runnerleer@gmail.com"
+                }
+            ],
+            "time": "2017-05-17 03:09:29"
         },
         {
             "name": "symfony/cache",
@@ -2070,16 +2153,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.19",
+            "version": "5.7.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1"
+                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit/69c4f49ff376af2692bad9cebd883d17ebaa98a1.zip",
-                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1",
+                "url": "https://files.phpcomposer.com/files/sebastianbergmann/phpunit/3cb94a5f8c07a03c8b7527ed7468a2926203f58b.zip",
+                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b",
                 "shasum": ""
             },
             "require": {
@@ -2097,7 +2180,7 @@
                 "phpunit/php-timer": "^1.0.6",
                 "phpunit/phpunit-mock-objects": "^3.2",
                 "sebastian/comparator": "^1.2.4",
-                "sebastian/diff": "~1.2",
+                "sebastian/diff": "^1.4.3",
                 "sebastian/environment": "^1.3.4 || ^2.0",
                 "sebastian/exporter": "~2.0",
                 "sebastian/global-state": "^1.1",
@@ -2148,7 +2231,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-04-03 02:22:27"
+            "time": "2017-05-22 07:42:55"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2320,23 +2403,23 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.1",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e"
+                "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
-                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
+                "url": "https://files.phpcomposer.com/files/sebastianbergmann/diff/7f066a26a962dbe58ddea9f72a4e82874a3975a4.zip",
+                "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
             },
             "type": "library",
             "extra": {
@@ -2368,7 +2451,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-08 07:14:41"
+            "time": "2017-05-22 07:24:03"
         },
         {
             "name": "sebastian/environment",
