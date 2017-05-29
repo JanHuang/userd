@@ -67,6 +67,14 @@ class UserModel extends Model
             'LIMIT' => [($page - 1) * 15, $limit]
         ]);
         $total = $this->db->count(static::TABLE);
+
+        $users = array_map(function ($v) {
+            if (!empty($v['avatar'])) {
+                $v['avatar'] = sprintf('%s://%s%s', request()->getUri()->getScheme(), request()->getUri()->getHost() . (request()->getUri()->getPort()), $v['avatar']);
+            }
+            return $v;
+        }, $users);
+
         return [
             'list' => $users,
             'page' => [
