@@ -25,14 +25,14 @@ class Validator extends Middleware
      */
     public function handle(ServerRequestInterface $request, DelegateInterface $next)
     {
-        $validator = 'Validator'.str_replace('/', '\\', ucwords($request->getUri()->getPath(), '/'));
+        /*$validator = 'Validator'.str_replace('/', '\\', ucwords($request->getUri()->getPath(), '/'));
         if (class_exists($validator)) {
             $validator = new $validator;
             if ( ! ($validator instanceof ValidationAbstract)) {
                 abort(500);
             }
             validator($request, (array)$validator->rules());
-        }
+        }*/
 
         return $next->process($request);
     }
