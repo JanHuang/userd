@@ -31,6 +31,55 @@ HTTP/1.1 201 Created
 }
 ```
 
+### 获取用户列表
+
+GET /api/users
+
+```json
+{
+
+    "list": [
+        {
+            "id": "1",
+            "username": "foo",
+            "nickname": "bar",
+            "birthday": "2017-04-09 22:36:48",
+            "gender": "1",
+            "avatar": "",
+            "followings": "0",
+            "followers": "1",
+            "country": "China",
+            "province": "GuangDong",
+            "city": "GuangZhou",
+            "region": "TianHe",
+            "from": ""
+        },
+        {
+            "id": "2",
+            "username": "bar",
+            "nickname": "foo",
+            "birthday": "2017-04-09 22:36:48",
+            "gender": "1",
+            "avatar": "",
+            "followings": "1",
+            "followers": "0",
+            "country": "China",
+            "province": "GuangDong",
+            "city": "GuangZhou",
+            "region": "TianHe",
+            "from": ""
+        }
+    ],
+    "page": {
+        "total": 1,
+        "current": 1,
+        "limit": 15,
+        "count": 2
+    }
+
+}
+```
+
 ### 获取个人信息
 
 GET /api/users/{id or username}
