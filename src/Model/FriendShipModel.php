@@ -28,7 +28,7 @@ class FriendShipModel extends Model
      */
     public function createFollowRelationShip($userId, $followId)
     {
-        return $this->db->insert(
+        $isOk = $this->db->insert(
             static::TABLE,
             [
                 'user_id' => $userId,
@@ -36,6 +36,13 @@ class FriendShipModel extends Model
                 'created' => date('Y-m-d H:i:s'),
             ]
         );
+
+        if ($isOk) {
+            $this->db->query('update users set followers = followers + 1 WHERE user_id = ' . $userId)->execute();
+            $this->db->query('update users set followings = followings + 1 WHERE user_id = ' . $followId)->execute();
+        }
+
+        return $isOk;
     }
 
     /**
@@ -45,13 +52,22 @@ class FriendShipModel extends Model
      */
     public function removeFollowRelationShip($userId, $followId)
     {
-        return $this->db->delete(
+        $isOk = $this->db->delete(
             static::TABLE,
             [
                 'user_id' => $userId,
                 'follow_id' => $followId,
             ]
         );
+
+        if ($isOk) {
+            if ($isOk) {
+                $this->db->query('update users set followers = followers - 1 WHERE user_id = ' . $userId)->execute();
+                $this->db->query('update users set followings = followings - 1 WHERE user_id = ' . $followId)->execute();
+            }
+        }
+
+        return $isOk;
     }
 
     /**
