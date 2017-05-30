@@ -12,7 +12,6 @@ class User extends Migration
     {
         $table = $this->table('users');
         $table
-//            ->addColumn('user_id', 'string', ['limit' => 32])
             ->addColumn('username', 'string', ['limit' => 32])
             ->addColumn('password', 'string', ['limit' => 100])
             ->addColumn('nickname', 'string', ['limit' => 20])
@@ -26,6 +25,8 @@ class User extends Migration
             ->addColumn('city', 'string', ['limit' => 20])
             ->addColumn('region', 'string', ['limit' => 20])
             ->addColumn('from', 'string', ['limit' => 32])
+            ->addColumn('followings', 'integer')
+            ->addColumn('followers', 'integer')
             ->addColumn('created', 'datetime')
             ->addColumn('updated', 'datetime')
         ;

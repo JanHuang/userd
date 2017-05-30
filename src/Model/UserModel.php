@@ -61,8 +61,14 @@ class UserModel extends Model
      */
     public function findUsers($page = 1, $limit = 15)
     {
+        if ($limit <= 5) {
+            $limit = 5;
+        } else if ($limit >= 25) {
+            $limit = 25;
+        }
+
         $users = $this->db->select(static::TABLE, [
-            'id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'country', 'province', 'city', 'region', 'from',
+            'id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'followings', 'followers', 'country', 'province', 'city', 'region', 'from',
         ], [
             'LIMIT' => [($page - 1) * 15, $limit]
         ]);

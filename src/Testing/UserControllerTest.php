@@ -14,6 +14,7 @@ use FastD\TestCase;
 
 class UserControllerTest extends TestCase
 {
+    const JSON_OPTION = JSON_UNESCAPED_UNICODE;
     public function testRegister()
     {
         $request = $this->request('POST', '/api/register');

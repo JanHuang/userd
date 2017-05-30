@@ -29,8 +29,9 @@ class UserController
     {
         $query = $request->getQueryParams();
         $page = isset($query['p']) ? (int) $query['p'] : 1;
+        $limit = isset($query['limit']) ? (int) $query['limit'] : 15;
 
-        $profile = model('user')->findUsers($page);
+        $profile = model('user')->findUsers($page, $limit);
 
         return json($profile);
     }
