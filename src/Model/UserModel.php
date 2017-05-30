@@ -110,8 +110,8 @@ SELECT
   province,
   city,
   region,
-  0 as followers,
-  0 as folloings
+  followers,
+  folloings
 FROM users
 WHERE id = {$id} OR username = '{$id}'
 SQL;
