@@ -38,8 +38,8 @@ class FriendShipModel extends Model
         );
 
         if ($isOk) {
-            $this->db->query('update users set followers = followers + 1 WHERE user_id = ' . $userId)->execute();
-            $this->db->query('update users set followings = followings + 1 WHERE user_id = ' . $followId)->execute();
+            $this->db->query('update users set followers = followers + 1 WHERE id = ' . $userId)->execute();
+            $this->db->query('update users set followings = followings + 1 WHERE id = ' . $followId)->execute();
         }
 
         return $isOk;
@@ -62,8 +62,8 @@ class FriendShipModel extends Model
 
         if ($isOk) {
             if ($isOk) {
-                $this->db->query('update users set followers = followers - 1 WHERE user_id = ' . $userId)->execute();
-                $this->db->query('update users set followings = followings - 1 WHERE user_id = ' . $followId)->execute();
+                $this->db->query('update users set followers = followers - 1 WHERE id = ' . $userId)->execute();
+                $this->db->query('update users set followings = followings - 1 WHERE id = ' . $followId)->execute();
             }
         }
 

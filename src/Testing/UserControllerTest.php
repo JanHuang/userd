@@ -23,7 +23,7 @@ class UserControllerTest extends TestCase
                 'username' => 'bar',
                 'nickname' => 'foo',
                 'birthday' => date('Y-m-d H:i:s'),
-                'gender' => 1,
+                'gender' => "1",
                 'avatar' => '',
                 'email' => '',
                 'phone' => '',

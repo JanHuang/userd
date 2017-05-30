@@ -14,7 +14,7 @@ use FastD\TestCase;
 
 class FriendShipControllerTest extends TestCase
 {
-    const JSON_OPTION = JSON_NUMERIC_CHECK;
+    const JSON_OPTION = JSON_UNESCAPED_UNICODE;
 
     public function testFollowers()
     {
@@ -38,8 +38,8 @@ class FriendShipControllerTest extends TestCase
                     'gender' => "1",
                     'avatar' => '',
                     'created' => '2017-04-09 22:36:48',
-                    'followers' => 0,
-                    'followings' => 0,
+                    'followers' => "0",
+                    'followings' => "0",
                 ],
             ]
         );
@@ -73,6 +73,6 @@ class FriendShipControllerTest extends TestCase
 
         $request = $this->request('GET', '/api/users/1/followings');
         $response = $this->handleRequest($request);
-//        $this->assertEmpty(json_decode((string)$response->getBody(), true));
+        $this->assertEmpty(json_decode((string)$response->getBody(), true));
     }
 }
