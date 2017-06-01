@@ -78,9 +78,42 @@ class FriendShipModel extends Model
      */
     public function findFollowers($userId, $page = 1, $limit = 15)
     {
-        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created, 0 as followers, 0 as followings from users left JOIN friend_ship on users.id = friend_ship.user_id WHERE friend_ship.follow_id = ".$userId;
+        if ($limit <= 5) {
+            $limit = 5;
+        } else if ($limit >= 25) {
+            $limit = 25;
+        }
 
-        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $offset = ($page - 1) * 15;
+
+        $total = $this->getTotal($userId, 'follow_id');
+
+        $sql = "
+select 
+  users.nickname, 
+  users.id as user_id, 
+  users.username, 
+  users.birthday, 
+  users.gender, 
+  users.avatar, 
+  friend_ship.created, 
+  users.followings,
+  users.followers
+from 
+  users left JOIN friend_ship 
+  on users.id = friend_ship.user_id 
+WHERE 
+  friend_ship.follow_id = ".$userId
+."LIMIT {$offset}, {$limit}";
+
+        $data = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        return [
+            'data' => $data,
+            'offset' => $offset,
+            'limit' => $limit,
+            'total' => $total
+        ];
     }
 
     /**
@@ -91,8 +124,44 @@ class FriendShipModel extends Model
      */
     public function findFollowing($userId, $page = 1, $limit = 15)
     {
-        $sql = "select users.nickname, users.id as user_id, users.username, users.birthday, users.gender, users.avatar, friend_ship.created, 0 as followers, 0 as followings from users LEFT JOIN friend_ship on users.id = friend_ship.follow_id WHERE friend_ship.user_id = ".$userId;
+        if ($limit <= 5) {
+            $limit = 5;
+        } else if ($limit >= 25) {
+            $limit = 25;
+        }
 
-        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $offset = ($page - 1) * 15;
+
+        $total = $this->getTotal($userId, 'user_id');
+
+        $sql = "
+select 
+  users.nickname, 
+  users.id as user_id, 
+  users.username, 
+  users.birthday, 
+  users.gender, 
+  users.avatar, 
+  friend_ship.created, 
+  users.followers, 
+  users.followings 
+from 
+  users LEFT JOIN friend_ship 
+  on users.id = friend_ship.follow_id 
+WHERE friend_ship.user_id = ".$userId . " " ."LIMIT {$offset}, {$limit}";
+
+        $data = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        return [
+            'data' => $data,
+            'offset' => $offset,
+            'limit' => $limit,
+            'total' => $total
+        ];
+    }
+
+    public function getTotal($userId, $where = 'user_id')
+    {
+        return $this->db->count('friend_ship', [$where => $userId]);
     }
 }

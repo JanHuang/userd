@@ -14,6 +14,7 @@ use FastD\TestCase;
 
 class GroupControllerTest extends TestCase
 {
+    const JSON_OPTION = JSON_UNESCAPED_UNICODE;
 
     public function testGroupAdd()
     {

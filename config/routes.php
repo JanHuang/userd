@@ -7,6 +7,7 @@ route()->group(['prefix' => '/api', 'middleware' => [
     // users
     route()->get('/users', 'UserController@findUsers');
     route()->get('/users/{id}', 'UserController@findUser');
+    route()->addRoute('OPTIONS', '/users/{id}', 'UserController@optionsUser');
     route()->post('/users', 'UserController@createUser');
     route()->post('/users/{id}/avatar', 'UserController@avatar');
     route()->patch('/users/{id}', 'UserController@patchUser');

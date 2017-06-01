@@ -66,11 +66,12 @@ class UserModel extends Model
         } else if ($limit >= 25) {
             $limit = 25;
         }
+        $offset = ($page - 1) * 15;
 
         $users = $this->db->select(static::TABLE, [
             'id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'followings', 'followers', 'country', 'province', 'city', 'region', 'from',
         ], [
-            'LIMIT' => [($page - 1) * 15, $limit]
+            'LIMIT' => [$offset, $limit]
         ]);
         $total = $this->db->count(static::TABLE);
 
@@ -82,13 +83,10 @@ class UserModel extends Model
         }, $users);
 
         return [
-            'list' => $users,
-            'page' => [
-                'total' => ceil($total / 15),
-                'current' => $page,
-                'limit' => $limit,
-                'count' => $total,
-            ]
+            'data' => $users,
+            'total' => $total,
+            'limit' => $limit,
+            'offset' => $offset
         ];
     }
 
@@ -111,7 +109,7 @@ SELECT
   city,
   region,
   followers,
-  folloings
+  followings
 FROM users
 WHERE id = {$id} OR username = '{$id}'
 SQL;

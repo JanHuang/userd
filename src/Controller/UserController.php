@@ -120,4 +120,9 @@ class UserController
         ]);
         return json($user);
     }
+
+    public function optionsUser(ServerRequest $request)
+    {
+        return json($request->getHeaders());
+    }
 }
