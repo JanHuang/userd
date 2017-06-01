@@ -152,7 +152,7 @@ SQL;
     public function deleteUser($id)
     {
         $this->db->delete(static::TABLE, [
-            'user_id' => $id
+            'id' => $id
         ]);
 
         return [];
