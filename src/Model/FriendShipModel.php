@@ -103,8 +103,7 @@ from
   users left JOIN friend_ship 
   on users.id = friend_ship.user_id 
 WHERE 
-  friend_ship.follow_id = ".$userId
-."LIMIT {$offset}, {$limit}";
+  friend_ship.follow_id = $userId LIMIT {$offset}, {$limit}";
 
         $data = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
