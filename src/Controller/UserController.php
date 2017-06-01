@@ -123,6 +123,11 @@ class UserController
 
     public function optionsUser(ServerRequest $request)
     {
-        return json($request->getHeaders());
+        return json([
+            'headers' => $request->getHeaders(),
+            'body' => (string) $request->getBody(),
+            'query' => $request->getQueryParams(),
+            'post' => $request->getParsedBody(),
+        ]);
     }
 }
