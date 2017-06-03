@@ -84,7 +84,7 @@ class FriendShipModel extends Model
             $limit = 25;
         }
 
-        $offset = ($page - 1) * 15;
+        $offset = ($page - 1) * $limit;
 
         $total = $this->getTotal($userId, 'follow_id');
 
@@ -129,7 +129,7 @@ WHERE
             $limit = 25;
         }
 
-        $offset = ($page - 1) * 15;
+        $offset = ($page - 1) * $limit;
 
         $total = $this->getTotal($userId, 'user_id');
 

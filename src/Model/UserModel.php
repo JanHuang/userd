@@ -66,7 +66,7 @@ class UserModel extends Model
         } else if ($limit >= 25) {
             $limit = 25;
         }
-        $offset = ($page - 1) * 15;
+        $offset = ($page - 1) * $limit;
 
         $users = $this->db->select(static::TABLE, [
             'id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'followings', 'followers', 'country', 'province', 'city', 'region', 'from',
