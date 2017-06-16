@@ -15,8 +15,8 @@
   from: ""
   followers: 1
   followings: 0
-  created: "2017-04-09 22:36:48"
-  updated: "2017-04-09 22:36:48"
+  created_at: "2017-04-09 22:36:48"
+  updated_at: "2017-04-09 22:36:48"
 -
   id: 2
   username: bar
@@ -34,5 +34,5 @@
   from: ""
   followers: 0
   followings: 1
-  created: "2017-04-09 22:36:48"
-  updated: "2017-04-09 22:36:48"
+  created_at: "2017-04-09 22:36:48"
+  updated_at: "2017-04-09 22:36:48"

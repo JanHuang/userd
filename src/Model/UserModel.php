@@ -31,23 +31,23 @@ class UserModel extends Model
         $user = $this->db->get(static::TABLE, ['id', 'password'], [
             'OR' => [
                 'id' => $identification,
-                'username' => $identification
-            ]
+                'username' => $identification,
+            ],
         ]);
 
         if (empty($user)) {
             return json([
                 'code' => '404',
-                'msg' => 'cannot found user'
+                'msg' => 'cannot found user',
             ], 404);
         }
 
         $isPass = Password::verify($password, $user['password']);
 
-        if (!$isPass) {
+        if ( ! $isPass) {
             return json([
                 'code' => 400,
-                'msg' => 'identification or password match error'
+                'msg' => 'identification or password match error',
             ], 400);
         }
 
@@ -63,22 +63,39 @@ class UserModel extends Model
     {
         if ($limit <= 5) {
             $limit = 5;
-        } else if ($limit >= 25) {
-            $limit = 25;
+        } else {
+            if ($limit >= 25) {
+                $limit = 25;
+            }
         }
         $offset = ($page - 1) * $limit;
 
         $users = $this->db->select(static::TABLE, [
-            'id', 'username', 'nickname', 'birthday', 'gender', 'avatar', 'followings', 'followers', 'country', 'province', 'city', 'region', 'from',
+            'id',
+            'username',
+            'nickname',
+            'birthday',
+            'gender',
+            'avatar',
+            'followings',
+            'followers',
+            'country',
+            'province',
+            'city',
+            'region',
+            'from',
         ], [
-            'LIMIT' => [$offset, $limit]
+            'LIMIT' => [$offset, $limit],
+            'ORDER' => ['created_at' => 'DESC'],
         ]);
         $total = $this->db->count(static::TABLE);
 
         $users = array_map(function ($v) {
-            if (!empty($v['avatar'])) {
-                $v['avatar'] = sprintf('%s://%s%s', request()->getUri()->getScheme(), request()->getUri()->getHost() . (request()->getUri()->getPort()), $v['avatar']);
+            if ( ! empty($v['avatar'])) {
+                $v['avatar'] = sprintf('%s://%s%s', request()->getUri()->getScheme(),
+                    request()->getUri()->getHost().(request()->getUri()->getPort()), $v['avatar']);
             }
+
             return $v;
         }, $users);
 
@@ -86,7 +103,7 @@ class UserModel extends Model
             'data' => $users,
             'total' => $total,
             'limit' => $limit,
-            'offset' => $offset
+            'offset' => $offset,
         ];
     }
 
@@ -111,7 +128,7 @@ SELECT
   followers,
   followings
 FROM users
-WHERE id = {$id} OR username = '{$id}'
+WHERE id = {$id} OR username = '{$id}' LIMIT 1;
 SQL;
 
         return $this->db->query($sql)->fetch(\PDO::FETCH_ASSOC);
@@ -128,7 +145,7 @@ SQL;
             'OR' => [
                 'id' => $id,
                 'username' => $id,
-            ]
+            ],
         ]);
 
         return $this->findUser($id);
@@ -152,7 +169,7 @@ SQL;
     public function deleteUser($id)
     {
         $this->db->delete(static::TABLE, [
-            'id' => $id
+            'id' => $id,
         ]);
 
         return [];

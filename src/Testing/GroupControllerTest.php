@@ -32,7 +32,9 @@ class GroupControllerTest extends TestCase
                 'id' => 2,
                 'name_singular' => 'manager',
                 'name_plural' => 'managers',
-                'created' => date('Y-m-d H:i:s'),
+                'is_available' => 0,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => '0000-00-00 00:00:00',
             ]
         );
 
@@ -46,12 +48,19 @@ class GroupControllerTest extends TestCase
         $this->equalsJson(
             $response,
             [
-                [
-                    'id' => 1,
-                    'name_singular' => 'admin',
-                    'name_plural' => 'admins',
-                    'created' => '2017-04-09 22:36:48',
+                'data' => [
+                    [
+                        'id' => 1,
+                        'name_singular' => 'admin',
+                        'name_plural' => 'admins',
+                        'is_available' => 0,
+                        'created_at' => '2017-04-09 22:36:48',
+                        'updated_at' => '0000-00-00 00:00:00',
+                    ],
                 ],
+                'total' => 1,
+                'offset' => 0,
+                'limit' => 15,
             ]
         );
     }
@@ -66,7 +75,9 @@ class GroupControllerTest extends TestCase
                 'id' => 1,
                 'name_singular' => 'admin',
                 'name_plural' => 'admins',
-                'created' => '2017-04-09 22:36:48',
+                'is_available' => 0,
+                'created_at' => '2017-04-09 22:36:48',
+                'updated_at' => '0000-00-00 00:00:00'
             ]
         );
     }
@@ -87,7 +98,9 @@ class GroupControllerTest extends TestCase
                 'id' => 1,
                 'name_singular' => $name,
                 'name_plural' => 'admins',
-                'created' => '2017-04-09 22:36:48',
+                'is_available' => 0,
+                'created_at' => '2017-04-09 22:36:48',
+                'updated_at' => '0000-00-00 00:00:00'
             ]
         );
     }

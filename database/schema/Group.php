@@ -14,7 +14,6 @@ class Group extends Migration
         $table
             ->addColumn('name_singular', 'string', ['limit' => 100])
             ->addColumn('name_plural', 'string', ['limit' => 100])
-            ->addColumn('created', 'datetime')
         ;
         return $table;
     }

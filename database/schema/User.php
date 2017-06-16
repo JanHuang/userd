@@ -27,8 +27,6 @@ class User extends Migration
             ->addColumn('from', 'string', ['limit' => 32])
             ->addColumn('followings', 'integer')
             ->addColumn('followers', 'integer')
-            ->addColumn('created', 'datetime')
-            ->addColumn('updated', 'datetime')
         ;
         return $table;
     }

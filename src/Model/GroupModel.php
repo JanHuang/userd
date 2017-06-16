@@ -18,17 +18,32 @@ class GroupModel extends Model
      * @param int $page
      * @return array
      */
-    public function select($page = 1)
+    public function select($page = 1, $limit = 15)
     {
-        $offset = ($page - 1) * static::LIMIT;
+        if ($limit <= 5) {
+            $limit = 5;
+        } else {
+            if ($limit >= 25) {
+                $limit = 25;
+            }
+        }
+        $offset = ($page - 1) * $limit;
 
-        return $this->db->select(
+        $data = $this->db->select(
             static::TABLE,
             '*',
             [
-                'LIMIT' => [$offset, static::LIMIT],
+                'LIMIT' => [$offset, $limit],
+                'ORDER' => ['created_at' => 'DESC'],
             ]
         );
+
+        return [
+            'data' => $data,
+            'total' => $this->db->count(static::TABLE),
+            'offset' => $offset,
+            'limit' => $limit
+        ];
     }
 
     /**
@@ -55,7 +70,7 @@ class GroupModel extends Model
      */
     public function patch($id, array $data)
     {
-        $affected = $this->db->update(
+        $this->db->update(
             static::TABLE,
             $data,
             [
@@ -74,7 +89,7 @@ class GroupModel extends Model
      */
     public function create(array $data)
     {
-        $data['created'] = date('Y-m-d H:i:s');
+        $data['created_at'] = date('Y-m-d H:i:s');
         $this->db->insert(static::TABLE, $data);
 
         return $this->find($this->db->id());

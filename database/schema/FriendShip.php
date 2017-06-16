@@ -14,7 +14,6 @@ class FriendShip extends Migration
         $table
             ->addColumn('user_id', 'string')
             ->addColumn('follow_id', 'string')
-            ->addColumn('created', 'datetime')
         ;
         return $table;
     }

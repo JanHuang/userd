@@ -33,7 +33,7 @@ class FriendShipModel extends Model
             [
                 'user_id' => $userId,
                 'follow_id' => $followId,
-                'created' => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d H:i:s'),
             ]
         );
 
@@ -97,15 +97,17 @@ select
   users.username, 
   users.birthday, 
   users.gender, 
-  users.avatar, 
-  friend_ship.created, 
+  users.avatar,  
   users.followings,
-  users.followers
+  users.followers,
+  friend_ship.created_at
 from 
   users left JOIN friend_ship 
   on users.id = friend_ship.user_id 
 WHERE 
-  friend_ship.follow_id = $userId LIMIT {$offset}, {$limit}";
+  friend_ship.follow_id = $userId
+ORDER BY friend_ship.created_at DESC 
+LIMIT {$offset}, {$limit}";
 
         $data = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -145,14 +147,13 @@ select
   users.birthday, 
   users.gender, 
   users.avatar, 
-  friend_ship.created, 
   users.followers, 
-  users.followings 
+  users.followings,
+  friend_ship.created_at 
 from 
   users LEFT JOIN friend_ship 
   on users.id = friend_ship.follow_id 
-WHERE friend_ship.user_id = ".$userId." LIMIT {$offset}, {$limit}";
-
+WHERE friend_ship.user_id = ".$userId." ORDER BY friend_ship.created_at DESC LIMIT {$offset}, {$limit}";
         $data = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
         return [

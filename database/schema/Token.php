@@ -19,7 +19,6 @@ class Token extends Migration
             ->addColumn('scope', 'string')
             ->addColumn('ip', 'integer', ['limit' => 10])
             ->addColumn('status', 'integer', ['limit' => 1])
-            ->addColumn('created', 'datetime')
         ;
         return $table;
     }

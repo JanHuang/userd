@@ -14,7 +14,6 @@ class UserGroup extends Migration
         $table
             ->addColumn('user_id', 'string')
             ->addColumn('group_id', 'string')
-            ->addColumn('created', 'datetime')
         ;
         return $table;
     }

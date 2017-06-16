@@ -29,7 +29,7 @@ class RegisterController
         $data = $request->getParsedBody();
 
         $data['password'] = Password::hash($data['password']);
-        $data['created'] = (new DateObject())->format('Y-m-d H:i:s');
+        $data['created_at'] = (new DateObject())->format('Y-m-d H:i:s');
 
         $user = model('user')->createUser($data);
 

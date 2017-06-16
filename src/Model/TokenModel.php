@@ -31,7 +31,7 @@ class TokenModel extends Model
         $this->db->insert(static::TABLE, [
             'access_token' => $accessToken,
             'user_id' => $userId,
-            'created' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
         ]);
 
         return $accessToken;
