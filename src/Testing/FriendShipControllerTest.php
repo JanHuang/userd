@@ -9,38 +9,42 @@
 
 namespace Testing;
 
-use Controller\FriendShipController;
+
 use FastD\TestCase;
 
 class FriendShipControllerTest extends TestCase
 {
-    const JSON_OPTION = JSON_UNESCAPED_UNICODE;
-
     public function testFollowers()
     {
         $request = $this->request('GET', '/api/users/1/followers');
         $response = $this->handleRequest($request);
-        $this->equalsJson($response, []);
+        $this->equalsJson($response, ['data' => [], 'offset' => 0, 'limit' => 15, 'total' => 0]);
     }
 
     public function testFollowing()
     {
         $request = $this->request('GET', '/api/users/1/followings');
         $response = $this->handleRequest($request);
+
         $this->equalsJson(
             $response,
             [
-                [
-                    'nickname' => 'foo',
-                    'user_id' => "2",
-                    "username" => 'bar',
-                    'birthday' => '2017-04-09 22:36:48',
-                    'gender' => "1",
-                    'avatar' => '',
-                    'created' => '2017-04-09 22:36:48',
-                    'followers' => "0",
-                    'followings' => "0",
+                'data' => [
+                    [
+                        'nickname' => 'foo',
+                        'user_id' => 2,
+                        "username" => 'bar',
+                        'birthday' => '2017-04-09 22:36:48',
+                        'gender' => 1,
+                        'avatar' => '',
+                        'created' => '2017-04-09 22:36:48',
+                        'followers' => 0,
+                        'followings' => 1,
+                    ],
                 ],
+                'offset' => 0,
+                'limit' => 15,
+                'total' => 1
             ]
         );
         $this->equalsStatus($response, 200);
@@ -73,6 +77,6 @@ class FriendShipControllerTest extends TestCase
 
         $request = $this->request('GET', '/api/users/1/followings');
         $response = $this->handleRequest($request);
-        $this->assertEmpty(json_decode((string)$response->getBody(), true));
+        $this->assertEmpty(json_decode((string)$response->getBody(), true)['data']);
     }
 }

@@ -38,8 +38,8 @@ class FriendShipModel extends Model
         );
 
         if ($isOk) {
-            $this->db->query('update users set followers = followers + 1 WHERE id = ' . $userId)->execute();
-            $this->db->query('update users set followings = followings + 1 WHERE id = ' . $followId)->execute();
+            $this->db->query('update users set followers = followers + 1 WHERE id = '.$userId)->execute();
+            $this->db->query('update users set followings = followings + 1 WHERE id = '.$followId)->execute();
         }
 
         return $isOk;
@@ -62,8 +62,8 @@ class FriendShipModel extends Model
 
         if ($isOk) {
             if ($isOk) {
-                $this->db->query('update users set followers = followers - 1 WHERE id = ' . $userId)->execute();
-                $this->db->query('update users set followings = followings - 1 WHERE id = ' . $followId)->execute();
+                $this->db->query('update users set followers = followers - 1 WHERE id = '.$userId)->execute();
+                $this->db->query('update users set followings = followings - 1 WHERE id = '.$followId)->execute();
             }
         }
 
@@ -80,8 +80,10 @@ class FriendShipModel extends Model
     {
         if ($limit <= 5) {
             $limit = 5;
-        } else if ($limit >= 25) {
-            $limit = 25;
+        } else {
+            if ($limit >= 25) {
+                $limit = 25;
+            }
         }
 
         $offset = ($page - 1) * $limit;
@@ -111,7 +113,7 @@ WHERE
             'data' => $data,
             'offset' => $offset,
             'limit' => $limit,
-            'total' => $total
+            'total' => $total,
         ];
     }
 
@@ -125,8 +127,10 @@ WHERE
     {
         if ($limit <= 5) {
             $limit = 5;
-        } else if ($limit >= 25) {
-            $limit = 25;
+        } else {
+            if ($limit >= 25) {
+                $limit = 25;
+            }
         }
 
         $offset = ($page - 1) * $limit;
@@ -147,7 +151,7 @@ select
 from 
   users LEFT JOIN friend_ship 
   on users.id = friend_ship.follow_id 
-WHERE friend_ship.user_id = ".$userId . " " ."LIMIT {$offset}, {$limit}";
+WHERE friend_ship.user_id = ".$userId." LIMIT {$offset}, {$limit}";
 
         $data = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -155,7 +159,7 @@ WHERE friend_ship.user_id = ".$userId . " " ."LIMIT {$offset}, {$limit}";
             'data' => $data,
             'offset' => $offset,
             'limit' => $limit,
-            'total' => $total
+            'total' => $total,
         ];
     }
 
