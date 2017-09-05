@@ -7,7 +7,7 @@
  * @link      http://www.fast-d.cn/
  */
 
-namespace Controller;
+namespace Controller\Api;
 
 
 use FastD\Http\Response;

@@ -1,31 +1,34 @@
 <?php
 
+route()->group(['prefix' => '/admin'], function () {
+
+});
+
 route()->group(['prefix' => '/api', 'middleware' => [
 //    'common.cache',
 //    'validator'
 ]], function () {
     // users
-    route()->get('/users', 'UserController@findUsers');
-    route()->get('/users/{id}', 'UserController@findUser');
-    route()->post('/test', 'UserController@optionsUser');
-    route()->post('/users', 'UserController@createUser');
-    route()->post('/users/{id}/avatar', 'UserController@avatar');
-    route()->patch('/users/{id}', 'UserController@patchUser');
-    route()->delete('/users/{id}', 'UserController@deleteUser');
-    route()->get('/users/{id}/followers', 'FriendShipController@followers');
-    route()->get('/users/{id}/followings', 'FriendShipController@following');
-    route()->post('/users/{id}/follow', 'FriendShipController@follow');
-    route()->delete('/users/{id}/followings/{follow}', 'FriendShipController@removeFollower');
+    route()->get('/users', 'Api\\UserController@findUsers');
+    route()->get('/users/{id}', 'Api\\UserController@findUser');
+    route()->post('/test', 'Api\\UserController@optionsUser');
+    route()->post('/users', 'Api\\UserController@createUser');
+    route()->post('/users/{id}/avatar', 'Api\\UserController@avatar');
+    route()->patch('/users/{id}', 'Api\\UserController@patchUser');
+    route()->delete('/users/{id}', 'Api\\UserController@deleteUser');
+    route()->get('/users/{id}/followers', 'Api\\FriendShipController@followers');
+    route()->get('/users/{id}/followings', 'Api\\FriendShipController@following');
+    route()->post('/users/{id}/follow', 'Api\\FriendShipController@follow');
+    route()->delete('/users/{id}/followings/{follow}', 'Api\\FriendShipController@removeFollower');
     // groups
-    route()->get('/groups', 'GroupController@findGroups');
-    route()->get('/groups/{id}', 'GroupController@findGroup');
-    route()->post('/groups', 'GroupController@createGroup');
-    route()->patch('/groups/{id}', 'GroupController@patchGroup');
-    route()->delete('/groups/{id}', 'GroupController@deleteGroup');
+    route()->get('/groups', 'Api\\GroupController@findGroups');
+    route()->get('/groups/{id}', 'Api\\GroupController@findGroup');
+    route()->post('/groups', 'Api\\GroupController@createGroup');
+    route()->patch('/groups/{id}', 'Api\\GroupController@patchGroup');
+    route()->delete('/groups/{id}', 'Api\\GroupController@deleteGroup');
     // login and logout
-    route()->post('/login', 'LoginController@login');
-    route()->post('/logout', 'LoginController@logout');
-    route()->post('/register', 'RegisterController@register');
-    route()->post('/third/{platform}', 'ThirtyController@login');
-
+    route()->post('/login', 'Api\\LoginController@login');
+    route()->post('/logout', 'Api\\LoginController@logout');
+    route()->post('/register', 'Api\\RegisterController@register');
+    route()->post('/third/{platform}', 'Api\\ThirtyController@login');
 });
